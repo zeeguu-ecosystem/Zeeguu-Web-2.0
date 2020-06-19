@@ -1,0 +1,137 @@
+@media (max-width: 700px){
+    .home-body{
+       height: 100%; 
+        width: 100%;
+        margin: 0;
+        background-color: #f8f7f7 !important;
+       /* position: fixed; */ 
+      /* position: absolute;*/
+        overflow:hidden !important;
+    
+     position: absolute;
+      
+    }
+
+    .clickable-text{
+        cursor: pointer;
+    }
+    
+    #ex-description-container{
+        position: relative;
+        text-align: center;
+        font-size: 6vw;
+        font-family: Montserrat;
+        color: black;
+        top: 1em;
+        text-align: center;
+        padding: 0em 2em;
+    }
+
+    
+    .ex-content{
+       /* overflow: auto; */
+        min-height: fit-content;
+        max-height: fit-content;
+        text-align: left;
+        text-justify: inter-word;
+        padding: 1em 1em;
+        clear: both;
+        font-size: 5vw;
+    }
+
+    .ex-footer{
+        border-radius: 0;
+        position: absolute; 
+        overflow: hidden;
+        overflow-y: hidden;
+        overflow-x: hidden;
+        width: 100%;
+        left: 0em;
+    }
+
+    .fluid{
+        height:100vh; 
+    }
+    #btn-speak{
+        left:36vw; 
+        right:unset; 
+    }
+
+    #ex-footer-primary{
+        font-size: small;
+        width:100vw; 
+        position: initial;
+    }
+    
+    #ex-context{
+        line-height: 1.8em;
+        font-size: large; 
+    }
+
+    .ex-input-box{
+        width:56vw; 
+    }
+
+    .ex-clickable{
+        left:0em; 
+    }
+
+  
+
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        font-size: 0.7em;
+      }
+      ::-moz-placeholder { /* Firefox 19+ */
+        font-size: 0.7em;
+      }
+      :-ms-input-placeholder { /* IE 10+ */
+        font-size: 0.7em;
+      }
+      :-moz-placeholder { /* Firefox 18- */
+        font-size: 0.7em;
+      }
+    }
+
+    @media (max-width: 500px){
+
+        .ex-clickable {
+            left: 0.3em;
+        }
+
+        .home-body {
+            position: fixed;
+        }
+
+        #starter-body{
+            padding:unset;
+        }
+    
+        .exercises-circles-container{
+            margin-top:-9vh; 
+        }
+
+        .ellipsis {
+            text-overflow: ellipsis;
+            margin: auto;
+        }
+
+        .ex3-column-center {
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        }
+
+    }
+    @media (max-width: 420px){
+
+
+        #ex-descript {
+            font-size: 0.85em;
+        }
+
+        #ex-to {
+            margin-top: -2em;
+        }
+
+
+}

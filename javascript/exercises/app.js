@@ -25,7 +25,6 @@ page.start();
 
 function redirect() {
     page.redirect("/practice");
-    console.log("redirected...");
 }
 /**
  * Main starter screen route

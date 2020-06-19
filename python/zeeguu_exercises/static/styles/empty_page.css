@@ -1,0 +1,171 @@
+body,
+html {
+  width: 100%;
+  height: 100%;
+}
+
+#emptyPage {
+  margin-left: 9em;
+}
+
+#gooAnimation {
+  padding-top: 10em;
+  padding-left: 5em;
+  position: inherit;
+}
+
+.empty-page-content {
+  margin: auto;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.empty-page-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: auto;
+  margin-top: 3em;
+}
+
+span {
+  font-family: Montserrat;
+  text-align: center;
+}
+
+.empty-page-title {
+  color: #000000;
+  font-size: 1.3em;
+  margin: auto;
+}
+
+.empty-page-info {
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-size: 0.8em;
+  color: #ffbb54 !important;
+}
+
+.animation_container {
+  width: 7em;
+  height: 7em;
+  position: inherit;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+  filter: url("#goo");
+  animation: rotate-move 2s ease-in-out infinite;
+}
+
+.dot {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background-color: #000;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+.dot-3 {
+  background-color: #ffbb54;
+  animation: dot-3-move 2s ease infinite;
+}
+
+.dot-2 {
+  background-color: #ffd047;
+  animation: dot-2-move 2s ease infinite;
+}
+
+.dot-1 {
+  background-color: #ff9900;
+  animation: dot-1-move 2s ease infinite;
+}
+
+@keyframes dot-3-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translateY(-18px) scale(0.45);
+  }
+  60% {
+    transform: translateY(-90px) scale(0.45);
+  }
+  80% {
+    transform: translateY(-90px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes dot-2-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translate(-16px, 12px) scale(0.45);
+  }
+  60% {
+    transform: translate(-80px, 60px) scale(0.45);
+  }
+  80% {
+    transform: translate(-80px, 60px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes dot-1-move {
+  20% {
+    transform: scale(1);
+  }
+  45% {
+    transform: translate(16px, 12px) scale(0.45);
+  }
+  60% {
+    transform: translate(80px, 60px) scale(0.45);
+  }
+  80% {
+    transform: translate(80px, 60px) scale(0.45);
+  }
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes rotate-move {
+  55% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  80% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@media (max-width: 800px) { 
+
+  .empty-page-title {
+    width: 84vw;
+
+  }
+
+  .empty-page-info {
+    font-size: 0.9em;
+    margin: 0.6em;
+  }
+
+}
+
+

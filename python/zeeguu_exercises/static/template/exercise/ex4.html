@@ -1,52 +1,54 @@
 <!--General exercise template-->
 
 
-<div>	
-	<div class = "custom-header">
-		<div class="col-xs-12 text-center block-header">
-			<p id = "ex-to" class = "h3"></p>					
-		</div>
-	</div>
-	
-	<div class="row ex-content">
-		<div class="col-xs-12">
-			<p id = "ex-context" class="h3 clickable-text">						
-			</p>
-			<br />
-			<p id = "typo-information">
-			</p>			
-		</div>
-	</div>
-	
-	<div class="row ex-footer">
-        <div id = "ex-footer-primary" class = "mask mask-appear">
-            <div id = "show_solution" class="col-xs-3 ex-footer-elem ex-clickable ex-footer-elem-left" href="#">
-                <img  class="clickable-symbol clickable-symbol-size" src="static/img/grey-question.png">
+<div>
+    <div class="custom-header">
+        <div class="block-header">
+            <p id="ex-to" class="h3"></p>
+        </div>
+    </div>
+
+    <div class="ex-content">
+        <div class="ex-content-box">
+            <p id="ex-context" class="h3 clickable-text">
+            </p>
+            <br />
+            <p id="typo-information">
+            </p>
+        </div>
+    </div>
+
+    <div class="ex-footer">
+        <div id="ex-footer-primary" class="mask mask-appear">
+            <div id="show_solution" class=" ex-footer-elem ex-clickable ex-footer-elem-left" href="#">
+                <button class=" text-btn hint-text-btn clickable-symbol ">Hint</button>
             </div>
 
-            <div class="col-xs-6 ex-footer-elem ex-clickable">
-                <input id = "ex-main-input" class="ex-input-box " placeholder="" data-original-title="" title="">
+            <div class="col-footer ex-footer-elem ex-clickable">
+                <input id="ex-main-input" class="ex-input-box " placeholder="" data-original-title="" title="">
             </div>
 
-            <div id = "check_answer"class="col-xs-3 ex-footer-elem ex-clickable ex-footer-elem-right" href="#">
-                 <button class = " text-btn check-text-btn clickable-symbol responsive-btn">Check</button>
+            <div id="check_answer" class=" ex-footer-elem ex-clickable ex-footer-elem-right" href="#">
+                <button class=" text-btn check-text-btn clickable-symbol responsive-btn">Check</button>
             </div>
         </div>
         <div id="ex-footer-secondary" class="mask">
-            <div id="feedback" class="col-xs-3 ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-left"
-                 href="#">
+            <div id="feedback" class=" ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-left"
+                href="#">
                 <button class=" text-btn feedback-text-btn clickable-symbol">Feedback</button>
             </div>
 
-            <div class = "col-xs-6">
+            <div class="col-footer">
+            </div>
+            <div id="btn-speak" class="icon-container" type="button">
+                <button class="sound-icon sound-icon-text-btn text-btn clickable-symbol">Listen <img class="sound-img"
+                        src="static/img/icons/orange-volume.svg" /> </button>
             </div>
 
-            <div id="next-exercise"
-                 class="col-xs-3 ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-right" href="#">
-                <img class="clickable-symbol clickable-symbol-size" src="static/img/next-ex.svg">
+            <div id="next-exercise" href="#">
+                <img class="clickable-symbol clickable-symbol-size" alt="Next" src="static/img/icons/next-arrow.svg">
             </div>
         </div>
-	</div>
-	
-</div>
+    </div>
 
+</div>

@@ -15,7 +15,7 @@ module.exports = {
 		translation: './reader/translation/main.js'
 	},
 	output: {
-		path: path.join(__dirname, '../python/umr/static/scripts/dist'),
+		path: path.join(__dirname, '../python/zeeguu_reader/static/scripts/dist'),
 		filename: '[name]-' + getVersion() + '.js'
 	},
 	module: {

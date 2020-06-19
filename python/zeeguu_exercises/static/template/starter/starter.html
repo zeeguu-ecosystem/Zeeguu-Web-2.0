@@ -1,23 +1,35 @@
 <!--Home page-->
-<script>document.body.style.backgroundColor = "#e9e9e9";</script>
+<script>
+  $(document).ready(function () {
+    $(".starter-btn").hover(
+      function () {
+        $(".words").fadeIn().css("display", "block");
+        $(".info").fadeIn().css("display", "block");
+      },
+      function () {
+        $(".words").css("display", "none");
+        $(".info").css("display", "none");
+      }
+    );
+  });
+</script>
 
-<div id = "starter-body">
-    <div class="starter-header">
-        <div>
-            <h1 class="display-1 starter-header-text starter-main-text">Choose a practice type</h1>
-        </div>
+<div id="starter-body">
+  <div class="starter-header">
+    <div>
+      <h1 class="exercieses-title starter-header-text starter-main-text">
+        Choose an Exercise
+      </h1>
     </div>
-	<div id = "starter-container" class = "starter-container">
-		<div class="container-fluid clear-top fluid">
-			<div class="row starter-content" id = "exercieses-cards">
-			</div>				
-			<div class="row col-xs-12 starter-footer">
-			</div>				
-		</div>		
-	</div>
-	<div id = "footnotes">
-		<span>Exercises by © Zeeguu | </span>
-		<a id = "credits">Credits</a><br/>
-		<span id = "attribution" class = "hide">Icons made by © Zeeguu-Exercises</span>
-	</div>		
+  </div>
+  <div id="starter-container" class="">
+    <div class="exercises-circles-container">
+      <div class="exercises_row" id="exercieses-cards"></div>
+    </div>
+  </div>
+  <div id="footnotes">
+    <span>Exercises by © Zeeguu | </span>
+    <a id="credits">Credits</a><br />
+    <span id="attribution" class="hide">Icons made by © Zeeguu-Exercises</span>
+  </div>
 </div>

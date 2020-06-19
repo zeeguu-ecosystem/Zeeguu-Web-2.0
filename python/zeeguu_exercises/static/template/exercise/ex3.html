@@ -2,45 +2,42 @@
 
 <div>			
 	<div class = "custom-header">
-		<div class="col-xs-12 text-center block-header">
+		<div class="block-header">
 			<p id = "ex-to" class = "h3"></p>					
 		</div>
 	</div>
 	
-	<div class="row ex-content">
-		<div class="col-xs-6 centering">
-			<button type = "button" id = "btn1" class = "btn btn-default option-btn ellipsis"></button><br/>
-			<button type = "button" id = "btn3" class = "btn btn-default option-btn ellipsis"></button><br/>
-			<button type = "button" id = "btn2" class = "btn btn-default option-btn ellipsis"></button><br/>
+	<div class="ex-content exerciseThree">
+		<div class="ex3-column-center">
+			<button type = "button" id = "btn1" class = "btn btn-standard option-btn ellipsis"></button><br/>
+			<button type = "button" id = "btn3" class = "btn btn-standard option-btn ellipsis"></button><br/>
+			<button type = "button" id = "btn2" class = "btn btn-standard option-btn ellipsis"></button><br/>
 		</div>
-		<div class="col-xs-6 centering">
-			<button type = "button" id = "btn4" class = "btn btn-default option-btn ellipsis"></button><br/>
-			<button type = "button" id = "btn5" class = "btn btn-default option-btn ellipsis"></button><br/>
-			<button type = "button" id = "btn6" class = "btn btn-default option-btn ellipsis"></button><br/>
+		<div class="ex3-column-center">
+			<button type = "button" id = "btn4" class = "btn btn-standard option-btn ellipsis"></button><br/>
+			<button type = "button" id = "btn5" class = "btn btn-standard option-btn ellipsis"></button><br/>
+			<button type = "button" id = "btn6" class = "btn btn-standard option-btn ellipsis"></button><br/>
 		</div>				
 	</div>
 	
-	<div class="row ex-footer">
+	<div class="ex-footer">
         <div id = "ex-footer-primary" class = "mask mask-appear">
-            <div id = "show_solution" class="col-xs-12 ex-footer-elem ex-clickable ex-footer-elem-left" href="#">
-                <img  class="clickable-symbol clickable-symbol-size" src="static/img/grey-question.png">
+			<div id = "show_solution" class=" ex-footer-elem ex-clickable ex-footer-elem-left" href="#">
+                <button class = " text-btn hint-text-btn clickable-symbol ">Hint</button>
             </div>
 
-            <div class="col-xs-0"></div>
+          
         </div>
         <div id="ex-footer-secondary" class="mask">
-            <div id="feedback" class="col-xs-3 ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-left"
+            <div id="feedback" class=" ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-left"
                  href="#">
                 <button class=" text-btn feedback-text-btn clickable-symbol">Feedback</button>
             </div>
 
-            <div class="col-xs-6 ">
-            </div>
-
-            <div id="next-exercise"
-                 class="col-xs-3 ex-footer-elem ex-clickable secondary-ex-footer-elem ex-footer-elem-right" href="#">
-                <img class="clickable-symbol clickable-symbol-size" src="static/img/next-ex.svg">
-            </div>
+         
+			<div id = "next-exercise"  href="#">
+                <img class="clickable-symbol clickable-symbol-size" alt = "Next" src="static/img/icons/next-arrow.svg">
+           </div>
         </div>
 	</div>
 </div>
