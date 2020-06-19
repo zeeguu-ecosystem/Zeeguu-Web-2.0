@@ -73,7 +73,7 @@ TextInputExercise.prototype.successCondition = function(){
 	
 	// Check exact match
 	if (input === answer) {
-		this.answerWithTyposMarked = this.answerWithTyposMarked.fontcolor(this.colourDarkGreen);
+		this.answerWithTyposMarked = this.answerWithTyposMarked.fontcolor(this.colourOrange);
 		this.typoInformation = "";
 		return true;
 	}
@@ -84,9 +84,9 @@ TextInputExercise.prototype.successCondition = function(){
 		var markedTypos = "";
 		for (var i = 0; i < answer.length; i++) {
 			if (input.charAt(i) !== answer.charAt(i)) {
-				markedTypos += this.answerWithTyposMarked.charAt(i).fontcolor("red");
+				markedTypos += this.answerWithTyposMarked.charAt(i).fontcolor("#6D6D6D");
 			} else {
-				markedTypos += this.answerWithTyposMarked.charAt(i).fontcolor(this.colourDarkGreen);
+				markedTypos += this.answerWithTyposMarked.charAt(i).fontcolor(this.colourOrange);
 			}
 		}
 		

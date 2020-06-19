@@ -38,7 +38,7 @@ Exercise.prototype = {
 	successAnimationTime: 2000,
 	exFeedback: 0,
 	instanceCorrect: false,
-	colourDarkGreen: "#7ca500",
+	colourOrange: "#ffbb54",
 	isMobileDevice: undefined,
 	typoInformation: "",
 	answerWithTyposMarked: "",

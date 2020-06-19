@@ -134,13 +134,13 @@ function Ex2(data,index,size){
 	
 	this.reGenerateContext = function(chosenWord){
 		var contextString = this.$context.html();
-		contextString = contextString.replace(" ______ ", chosenWord.bold());
+		contextString = contextString.replace(" ______ ", chosenWord.bold().fontcolor(this.colourOrange));
 		this.$context.html (contextString);
 	};
 	
 	this.exerciseSpecificSuccessHandler = function() {
 		// Success handling specific to this exercise
-		var translation = this.data[this.index].to.bold().fontcolor(this.colourDarkGreen);
+		var translation = this.data[this.index].to.bold().fontcolor(this.colourOrange);
 		this.$to.html (translation);
 		this.$optionBtn.prop('disabled', true);
 	};

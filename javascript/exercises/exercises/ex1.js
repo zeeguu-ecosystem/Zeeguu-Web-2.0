@@ -53,7 +53,7 @@ function Ex1(data,index,size){
 	};
 	
 	// Re-print the context on screen, with the solution
-	// highlighted in boldface and green colour.
+	// highlighted in boldface and orange colour.
 	this.reGenerateContext = function(inputWord){
 		var contextString = this.data[this.index].context;
 		var solution = this.data[this.index].from;
