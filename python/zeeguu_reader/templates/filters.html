@@ -1,0 +1,26 @@
+<link rel="stylesheet" type="text/css"
+  href="{{ url_for('reader_blueprint.static',filename='styles/newStyling/article-settings.css') }}" />
+
+<!-- Template for feed items interests -->
+<script id="interests-template" type="text/template">
+  <div addableID="{% raw %}{{ id }}{% endraw %}" >
+      <button
+          type="button"
+          class="interests"
+          >
+        <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
+        </button>
+  </div>
+</script>
+
+<!-- Template for feed items non-interest -->
+<script id="noninterests-template" type="text/template">
+  <div addableID="{% raw %}{{ id }}{% endraw %}">
+      <button
+          type="button"
+          class="noninterest"
+          >
+        <span class="addableTitle">{% raw %}{{ title }}{% endraw %}</span>
+      </button>
+  </div>
+</script>

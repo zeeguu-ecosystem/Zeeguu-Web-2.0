@@ -1,0 +1,233 @@
+<html>
+  <head>
+    <title>Zeeguu Reader</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "UA-89557275-2");
+    </script>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='styles/newStyling/side-bar.css') }}"
+    />
+
+    <!--CSS for NEW general style-->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='styles/newStyling/style.css') }}"
+    />
+
+    <!-- Fonts -->
+    <link
+      href="{{ url_for('static', filename='fonts/montserrat.css') }}"
+      type="text/css"
+      rel="stylesheet"
+    />
+
+    <!-- Script -->
+    <script type="text/javascript" src="/static/js/MobileHelpers.js"></script>
+
+    <!-- Include the translation package. -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('reader_blueprint.static',filename='scripts/dist/css/translation-1.0.0.css') }}"
+    />
+    <script src="{{ url_for('reader_blueprint.static',filename='scripts/dist/translation-1.0.0.js') }}"></script>
+  </head>
+
+  <body onload="sideBarLoad()">
+    <div
+      id="loaderanimation"
+      style="
+        left: 0;
+        position: absolute;
+        text-align: center;
+        color: gray;
+        top: 50%;
+        width: 100%;
+        z-index: 9999;
+        animation: fadein 2s 0s 6 linear alternate;
+      "
+    >
+      Loading article ...
+    </div>
+
+    <!-- Top bar -->
+    <div class="articleLayout" id="main-containerID">
+      <header class="articleHeader">
+        <div id="toolbarContainer" class="toolbar">
+          <div class="main-tools">
+            <div>
+              <button class="tool" id="toggle_translate">
+                <img
+                  class="click_translate"
+                  src="{{ url_for('reader_blueprint.static',filename='images/SVGs/translate.svg') }}"
+                  alt="click and translate"
+                />
+                <span class="tooltiptext">click and translate</span>
+              </button>
+              <button class="tool" id="toggle_listen">
+                <img
+                  class="click_listen"
+                  src=" {{ url_for('reader_blueprint.static',filename='images/SVGs/sound.svg') }}"
+                  alt="click and listen"
+                />
+                <span class="tooltiptext">click and listen</span>
+              </button>
+              <button class="tool" id="toggle_undo">
+                <img
+                  src="{{ url_for('reader_blueprint.static',filename='images/SVGs/undo.svg') }}"
+                  alt="undo a translation"
+                />
+                <span class="tooltiptext">undo translation</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </header>
+      {% include "sideBar.html" %}
+
+      <script>
+        function sideBarLoad() {
+          var wi = window.outerWidth;
+          var nav = document.getElementById("myTopnav");
+
+          if (wi < 600) {
+            nav.style.display = "none";
+            document.getElementById("arrow-p").className = "arrow-none-block";
+            document.getElementById("main-containerID").style.cssText =
+              "margin:0px;";
+          }
+        }
+      </script>
+
+      <span id="articleID" style="display: none;">{{ article_id }}</span>
+
+      <!-- Article content. -->
+      <main class="layout__content">
+        <div
+          id="main_article_content"
+          style="visibility: hidden;"
+          class="page-content-container"
+        >
+          <div class="content-container">
+            <div class="page-content">
+              <p class="title translatable">
+                <span id="articleTitle"></span>
+              </p>
+              <hr class="seperator" />
+              <div class="articleDetails">
+                <button id="bookmark_button" class="bookmark_button">
+                  <img
+                    class="bookmark_icon_done"
+                    src="{{ url_for('reader_blueprint.static',filename='images/SVGs/bookmark-done.svg') }}"
+                    alt="bookmark this article"
+                  />
+                  <img
+                    class="bookmark_icon_undone"
+                    src="{{ url_for('reader_blueprint.static',filename='images/SVGs/bookmark-undone.svg') }}"
+                    alt="bookmark this article"
+                  />
+                  <span class="bookmarkText">Save to Bookmarks</span>
+                </button>
+
+                <p id="articleInfo">
+                  <span id="articleURL"></span>
+                  <a href="" target="_blank" id="source">source<br /></a>
+                  <span id="authors"></span>
+                </p>
+              </div>
+
+              <div id="articleContent" class="translatable"></div>
+              <br />
+            </div>
+          </div>
+        </div>
+
+        <div class="finalChoices">
+          <button
+            id="enjoyedButton"
+            class="finalChoicesBottons"
+            onclick="hideToolbar()"
+            style="visibility: hidden;"
+            type="button"
+          >
+            Enjoyed reading?
+          </button>
+          <div class="modal" id="modalEnjoyed">
+            <div class="modalContent">
+              <span class="close" id="closeEnjoyed">&times;</span>
+              <h1 class="modalTitle">Did you enjoy reading this article?</h1>
+              <button class="modalButton yes">Yes</button>
+              <button class="modalButton no">No</button>
+              <h2 class="modalText">
+                Help us make Zeeguu even smarter by always letting us know
+                whether you liked reading an article or not.
+              </h2>
+            </div>
+          </div>
+          <button
+            id="reviewButton"
+            class="finalChoicesBottons"
+            onclick="hideToolbar()"
+            style="visibility: hidden;"
+            type="button"
+          >
+            Review Words
+          </button>
+          <div class="modal" id="modalReview">
+            <div class="modalContent">
+              <span class="close" id="closeReview">&times;</span>
+              <h1 class="modalTitle">Review Words</h1>
+              <h2 class="modalText textEnjoyed">
+                Ensure only to delete the words that you don’t wish to have
+                displayed in your exercises.
+              </h2>
+              <div id="wordList"></div>
+              <a href="/read"
+                ><button class="modalButton reviewBtn backArticles">
+                  Back to Articles
+                </button></a
+              >
+              <a href="/practice"
+                ><button class="modalButton reviewBtn">
+                  Continue to Exercises
+                </button></a
+              >
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <script id="translatedwords-template" type="text/template">
+        <div id="translationID" translationID="{% raw %}{{ id }}{% endraw %}" class="{% raw %}{{ id }}{% endraw %}">
+          <span class="word">
+            <img id="{% raw %}{{ id }}{% endraw %}" class="trash"
+            src="{{ url_for('reader_blueprint.static',filename='images/SVGs/trash.svg') }}"
+            alt="delete word" />
+            {% raw %}{{ from }}{% endraw %} - {% raw %}{{ to }}{% endraw %}  </span>
+        </div>
+      </script>
+
+      <!-- Menu to change the translation -->
+      <div id="alterMenuContainer">
+        <div id="alterMenu"></div>
+      </div>
+    </div>
+  </body>
+</html>

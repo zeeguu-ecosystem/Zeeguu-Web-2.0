@@ -1,0 +1,66 @@
+{% extends "bookmarks/layout_bookmarks.html" %}
+
+{% from "layout_common.html" import no_words_yet %}
+
+{% set active_page = "learned" %}
+
+{% block body %}
+
+<div class="mainWordsContainer" id="wordsContainer">
+
+    <div class="wordsHeader">
+        <div>
+            <h1 class="titleHeader">Review Your Words</h1>
+            <div class="pagesContainer">
+                <a class="wordpagesLinks" href="/bookmarks">Translated Words</a>
+                <a class="seperator">|</a>
+                <a class="wordpagesLinks" href="/starred_bookmarks">Starred Words</a>
+                <a class="seperator">|</a>
+                <a class="wordpagesLinks active" href="/learned_bookmarks">Learned Words</a>
+                <a class=" seperator">|</a>
+                <a class="wordpagesLinks" href="/top_bookmarks">Top Words</a>
+            </div>
+        </div>
+    </div>
+
+    {{ top_message("Learned words are words that were correct in exercises in 4 different days.")}}
+
+    {% include  "sideBar.html" %}
+
+    {% if bookmarks %}
+    <div class="learnedWordsContainer">
+        <div class="amount">
+            <p>You have learned <b>{{ bookmarks|length}}</b> words so far.</p>
+        </div>
+
+        {% for bookmark in bookmarks %}
+
+        <div class="oneLearnedWord" id="bookmark{{ bookmark.id }}">
+            <div class="verticalLine learned"></div>
+
+            <div class="learnedWords">
+                <div class="translation">
+                    <b>{{ bookmark.from_ }}</b> - {{ bookmark.to }}
+                    <br />
+                </div>
+                <div>
+                    <p class="learnedDate">Learned the following dates: <small>{{ bookmark.learned_datetime }}</small>
+                </div>
+            </div>
+
+            <div class="deleteLearned">
+                <a href="javascript:void(0);" onclick="deleteBookmark({{ bookmark.id }})" id="trash">
+                    <img src="{{ url_for('static', filename='img/trash.svg') }}" alt="trash" />
+                </a>
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+{% else %}
+{{ no_words_yet() }}
+{% endif %}
+{% endblock %}

@@ -1,0 +1,109 @@
+.loader {
+  width: 100%;
+  margin: 0;
+  margin-top: 5%;
+  text-align: center;
+}
+
+.circle {
+  display: inline-block;
+  margin-bottom: 25px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #ffd047;
+  box-shadow: 4px -40px 60px 5px rgb(255, 187, 84) inset;
+}
+
+.loading {
+  background: linear-gradient(to right, rgb(255, 187, 84) 50%, transparent 50%);
+  animation: spin 1s infinite linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.loading::before {
+  display: block;
+  content: "";
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90px;
+  height: 90px;
+  background: #ffffff;
+  border-radius: 50%;
+}
+
+/**** For NO ARTICLES ****/
+
+.icon-search {
+  cursor: pointer;
+  position: relative;
+  transform: scale(1);
+  margin: auto;
+  height: 4em;
+  width: 3em;
+  margin-bottom: 25px;
+}
+
+svg {
+  overflow: visible;
+  position: absolute;
+  left: -15px;
+}
+
+circle,
+line,
+path {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: transparent;
+  stroke: #ffd047;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+line {
+  position: absolute;
+}
+
+.notFound {
+  animation: notFound 1s 1;
+  transform-origin: 37.4% 39.2%;
+  transform: rotate(0deg);
+}
+
+@keyframes notFound {
+  0% {
+    transform: rotate(30deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0;
+  }
+  16% {
+    transform: rotate(170deg);
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: rotate(-90deg);
+  }
+  78% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

@@ -1,0 +1,68 @@
+{% extends "layout_simple.html" %} {% set active_page = "login" %} {% block body
+%} {% assets filters="cssmin", output="instance/login.css", "css/login.css"-%}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets -%}
+
+<div>
+  <div class="loginPG">
+    <div class="logoContainer1">
+      <img
+        class="zeeguuLogo"
+        src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+        alt="Zeeguu Logo - The Elephant"
+      />
+    </div>
+
+    <form id="login" action="" method="post" role="form">
+      <div class="outerContainer">
+        <div class="innerContainer authentificationBox">
+          <p id="authentificationBoxTitle">Sign In</p>
+          <div class="inputField">
+            <label>Email</label>
+            <input
+              type="email"
+              class="field"
+              id="email"
+              name="email"
+              placeholder="Email"
+              background-color="#FFFFFF"
+            />
+          </div>
+
+          <div class="inputField">
+            <label>Password</label>
+            <input
+              type="password"
+              class="field"
+              id="password"
+              name="password"
+              placeholder="Password"
+              background-color="#FFFFFF"
+            />
+          </div>
+
+          <div class="inputField">
+            <button
+              type="submit"
+              name="login"
+              value="Login"
+              class="loginButton"
+            >
+              Sign In
+            </button>
+          </div>
+          {{ flash_messages() }}
+          <div>
+            <small class="extraText"
+              >Or
+              <a class="links" href="create_account">create an account</a> or
+              <a class="links" href="/reset_pass">reset your password</a></small
+            >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

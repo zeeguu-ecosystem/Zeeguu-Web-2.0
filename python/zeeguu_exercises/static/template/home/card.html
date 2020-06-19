@@ -1,0 +1,14 @@
+<!--Card template using Mustache.js-->
+
+{{#Exercises}}
+<div class="col-xs-12 col-sm-6 col-md-3" ex-id = {{exID}}>
+	<a type = "button" class = "btn home-btn">
+		<div class = "ex-time">
+			<span class = "info-descript">{{time}} min</span>
+		</div>
+		<div class="btn-img" style = "background-image: url({{icon}});" ></div>
+		<span class = "h4">{{name}}</span>
+		<span class = "info-descript">{{info}}</span>
+	</a>
+</div>
+{{/Exercises}}

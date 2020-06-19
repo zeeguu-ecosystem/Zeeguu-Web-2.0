@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Used to separate the concern of drop down menu-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
+    
+    <!-- Add Page Title -->
+    <title>Zeeguu Practice</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Add Local styles -->
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/google_fonts.css') }}"
+          type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/bootstrap_mini.css') }}"
+          type="text/css">
+
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/custom.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/success.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/loader.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/dropdown.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/sweetalert.css') }}" type="text/css">
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/responsive.css') }}" type="text/css">
+
+    <!-- Add favicon -->
+    <link rel="icon" href="{{ url_for('ex_blueprint.static',filename='img/favicon.png') }}" type="image/x-icon"/>
+    <!-- Add External scripts -->
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-89557275-2');
+    </script>
+
+</head>
+<body class="home-body">
+
+<a href="/" rel="external">
+    <img width="32" style="margin: 12px" id="zeeguu-logo" src="/static/img/gray-home.png" alt="Home">
+</a>
+
+<div id="main-content">
+</div>
+
+<!-- HTML that enables the loading page to show loader-->
+<div id="loader" class="hide">
+    <div class="spinner">
+        <div class="double-bounce1"></div>
+        <div class="double-bounce2"></div>
+    </div>
+</div>
+
+<!-- Add Local main script -->
+<script src="{{ url_for('ex_blueprint.static',filename='js/dist/appEntry.entry.js') }}"></script>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+{% set active_page = "about" %} {% extends "layout_simple_white.html" %} {%
+block body %} {% include "sideBar.html" %}
+<div class="aboutZeeguu">
+  <div class="howTo" id="aboutContainer">
+    <h1>About Zeeguu</h1>
+    <h2>
+      A research project designed to speed &
+      <br />fun up vocabulary learning in a new language
+    </h2>
+    <div class="howToAbout">
+      <h3>Our approach is designed around three fundamental principles</h3>
+
+      <div class="containers">
+        <div class="htContainer">
+          <div class="hithere">
+            <img class="iconHowTo" src="../static/img/findArticle.svg" />
+          </div>
+          <h2>Read Articles</h2>
+          <h3>about only the stuff you like</h3>
+          <p>
+            Unlike most traditional learning materials based on pre-defined,
+            standardized and let's admit it: boring texts, we think that you
+            should read only the stuff that you love: eBooks, blogs, articles
+            and news in the desired language. In each of these contexts and on
+            any chosen device, you should have translations of unfamiliar terms
+            “at the touch of a fingertip”.
+          </p>
+        </div>
+
+        <div class="htContainer">
+          <div class="hithere">
+            <img class="iconHowTo" src="../static/img/click.svg" />
+          </div>
+          <h2>Translate Words</h2>
+          <h3>and have them everywhere with you</h3>
+          <p>
+            Words that you have once translated, will be available to you always
+            (read as “from any of your devices”) and they will go into your own,
+            private dictionary. The information about the context where you
+            encountered a given new word will also be synchronized among the
+            applications and devices. There is no doubt we understand and
+            remember so much better words in context.
+          </p>
+        </div>
+
+        <div class="htContainer">
+          <div class="hithere">
+            <img class="iconHowTo" src="../static/img/correct.svg" />
+          </div>
+          <h2>Practice Vocabulary</h2>
+          <h3>with personalized exercices</h3>
+          <p>
+            Based on the texts you read, the words you translate, and lists of
+            word frequencies, Zeeguu will use machine learning to build a model
+            of your current vocabulary in the target language. Applying this
+            model and using spaced repetition, you will receive personalized
+            exercises that will help you learn, practice and retain the new
+            words, ranked according to their importance.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

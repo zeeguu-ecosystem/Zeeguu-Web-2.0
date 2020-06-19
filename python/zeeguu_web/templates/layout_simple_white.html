@@ -1,0 +1,15 @@
+{% from "layout_common.html" import menu_item, flash_messages, header %}
+
+{% set active_page = active_page|default('top') -%}
+
+<html>
+
+{{ header() }}
+
+<body class=" whiteBody"  onload="sideBarLoad()">
+
+    {% block body %}{% endblock %}
+
+</body>
+
+</html>

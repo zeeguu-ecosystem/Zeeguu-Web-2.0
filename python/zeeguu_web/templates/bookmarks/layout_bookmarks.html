@@ -1,0 +1,24 @@
+{% from "layout_common.html" import menu_item, flash_messages, header, home_link, dropdown_menu %}
+
+{% macro top_message(message) -%}
+
+<div class="topMessageContainer">
+    <div class="topMessage">
+        {{ message }}
+    </div>
+</div>
+
+{%- endmacro %}
+
+{% set active_page = active_page|default('top') -%}
+
+<html>
+
+{{ header() }}
+
+
+<body onload="sideBarLoad()">
+    {% block body %}{% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<script>
+
+    function generate_learner_statistics_data(not_encountered, known, learned, learning) {
+        var learner_statistics_data = [
+            {"label": "Not Encountered", "value": not_encountered},
+            {"label": "Known", "value": known},
+            {"label": "Learned", "value": learned},
+            {"label": "Learning", "value": learning}
+        ];
+        return learner_statistics_data;
+    }
+
+    var not_encountered = {{ estimator.get_not_encountered_words_count() }};
+    var known = {{ estimator.get_not_looked_up_words_count() }};
+    var learned = {{ estimator.get_known_bookmarks_count() }};
+    var learning = {{ user.bookmark_count() }};
+
+    var words_unlocked = +known + learned;
+    var tiers = 0;
+    var words_unlocked_temp = words_unlocked;
+    while (words_unlocked_temp > 500) {
+        words_unlocked_temp = Math.round(Math.floor(parseInt(words_unlocked_temp) / 2));
+        tiers++;
+    }
+
+    var total = 500;
+    for (i = 0; i <= tiers; i++) {
+        var graph_name = "pie_graph" + (i + 1);
+        document.write("<" + graph_name + "></" + graph_name + ">");
+        if (words_unlocked > total) {
+
+            var temp_not_encountered = 0;
+            var temp_learned = Math.min(total, learned);
+            var temp_known = Math.min(known, total - temp_learned);
+            var temp_learning = 0;
+
+            var learner_statistics_data =
+                    generate_learner_statistics_data(temp_not_encountered, temp_known, temp_learned, temp_learning);
+        } else {
+            var total_pie_sum = known + learned + learning;
+            var temp_not_encountered = Math.min(Math.max(0, total - total_pie_sum), not_encountered);
+            var temp_learning = Math.min(total - (known + learned), learning);
+
+            var learner_statistics_data =
+                    generate_learner_statistics_data(temp_not_encountered, known, learned, temp_learning);
+        }
+        piechart_graph(learner_statistics_data, graph_name, "Top " + total + " Words ");
+        total = total * 2;
+    }
+
+    document.write("<h4> Your level is :" + (tiers + 1) + "</h4>");
+
+</script>

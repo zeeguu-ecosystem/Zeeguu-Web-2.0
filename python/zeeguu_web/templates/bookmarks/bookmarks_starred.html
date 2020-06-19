@@ -1,0 +1,70 @@
+{% extends "bookmarks/layout_bookmarks.html" %}
+
+{% from "layout_common.html" import no_words_yet %}
+
+{% set active_page = "starred" %}
+
+{% block body %}
+
+<div class="mainWordsContainer" id="wordsContainer">
+
+    <div class="wordsHeader">
+        <div>
+            <h1 class="titleHeader">Review Your Words</h1>
+            <div class="pagesContainer">
+                <a class="wordpagesLinks" href="/bookmarks">Translated Words</a>
+                <a class="seperator">|</a>
+                <a class="wordpagesLinks active" href="/starred_bookmarks">Starred Words</a>
+                <a class="seperator">|</a>
+                <a class="wordpagesLinks" href="/learned_bookmarks">Learned Words</a>
+                <a class=" seperator">|</a>
+                <a class="wordpagesLinks" href="/top_bookmarks">Top Words</a>
+            </div>
+        </div>
+    </div>
+
+    {{ top_message("Starred Words have priority in your exercises later on.") }}
+
+    {% include  "sideBar.html" %}
+
+
+    {% if bookmarks %}
+
+    {% for bookmark in bookmarks %}
+    <div id="bookmark{{ bookmark.id }}" class="StarredContainer">
+        <div class="one verticalLine"></div>
+        <div class="two" id="star{{ bookmark.id }}">
+            {% if bookmark.starred %}
+            <a href="javascript:void(0);" onclick="unstarBookmark({{ bookmark.id }})">
+                <img src="{{ url_for('static', filename='img/star.svg') }}" alt="star" />
+            </a>
+            {% else %}
+            <a href="javascript:void(0);" onclick="starBookmark({{ bookmark.id }})">
+                <img src="{{ url_for('static', filename='img/star_empty.svg') }}" alt="star" />
+            </a>
+            {% endif %}
+
+
+        </div>
+
+        <div class="three impression">
+
+            {{ bookmark.from_ }}
+            -
+            {{ bookmark.to }}
+
+        </div>
+
+        <div class="five delete"><a href="javascript:void(0);" onclick="deleteBookmark({{ bookmark.id }})" id="trash">
+                <img src="{{ url_for('static', filename='img/trash.svg') }}" alt="trash" />
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+
+    {%  else %}
+    {{ no_words_yet() }}
+    {% endif %}
+
+</div>
+{% endblock %}

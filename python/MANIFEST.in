@@ -1,0 +1,2 @@
+recursive-include zeeguu_web/static *
+recursive-include zeeguu_web/templates *

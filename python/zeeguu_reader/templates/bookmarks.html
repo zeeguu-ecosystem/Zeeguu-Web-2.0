@@ -1,0 +1,86 @@
+{% include "articleHeader.html" %}
+
+<body onload="sideBarLoad()">
+  <div class="main-container" id="main-containerID">
+    {% include "headerMenu.html" %}
+    {% include "sideBar.html" %}
+    <div class="widthOfColumn">
+      <nav>
+        <div class="sortingCategories">
+          {% include "sorting.html" %}
+        </div>
+      </nav>
+    </div>
+    <div class="widthOfColumn">
+    </div>
+    <div class="widthOfColumn">
+      <main class="articlesMainContainer">
+        <section class="articleTab is-active" id="inbox">
+          <div class="page-content">
+            <!-- Search notification -->
+            <ul id="searchNotification" class="searchNotification"></ul>
+            <!-- List of articles -->
+            <ul id="articleLinkList" class="articleLinkList"></ul>
+            <br />
+          </div>
+        </section>
+        <section class="articleTab" id="starred">
+          <div class="page-content">
+            <ul id="starredArticleList" class="articleLinkList"></ul>
+            <div id="emptyStarredArticleListImage" class="emptyPage">
+              <div class="icon-search">
+                <svg version="1.1" viewBox="0 0 50 50">
+                  <g>
+                    <g class="notFound">
+                      <circle class="st0" cx="25" cy="25" r="17.1" />
+                      <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9" />
+                    </g>
+                </svg>
+              </div>
+              <p> You have not bookmarked any articles yet!</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script id="starred-articleLink-template" type="text/template">
+      <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+         articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+        <a
+         href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+         <div class="articleLinkHeader">
+          <div class="articleLinkTitle headerElement">
+              {% raw %}{{ articleLinkTitle }}{% endraw %}
+          </div>
+          <div class="articleLinkDifficulty headerElement">
+              <span class="difficulty-level articleLinkDifficultyText"
+              > {% raw %}{{articleDifficulty}}{% endraw %} </span>
+              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
+          </div>
+      </div>
+          <div class="articleLinkSummary">
+            {% raw %}{{articleSummary}}{% endraw %}
+          </div>
+          <div class="articleTopics">
+            <div class="articleLinkImage">
+              <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon"/>
+            </div>
+            {% raw %}{{#articleTopics}}{% endraw %}
+            <span class="singleTopicTag">
+              {% raw %}{{topic}}{% endraw %}
+            </span>
+            {% raw %}{{/articleTopics}}{% endraw %}
+          </div>
+        </a>
+      </li>
+      <div class="articleLinkSpacer"></div>
+    </script>
+
+  <!-- Dialog windows for adding interests or non-interests -->
+  {% include 'filters.html' %}
+
+</body>
+
+</html>

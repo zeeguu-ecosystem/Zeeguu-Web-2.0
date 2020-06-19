@@ -1,0 +1,88 @@
+{% extends "layout_simple.html" %}
+
+<!--
+    The different states in which this page can be:
+     1. default -> shows only the email input box
+     2. code-active = True -> the user should have received the code by email
+            the page shows the fields for code and new password
+     3. message = "..." -> after the user has input a code
+-->
+{% block body %} {% assets filters="cssmin", output="instance/login.css",
+"css/login.css"-%}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets -%}
+
+<div class="loginPG">
+  <div class="logoContainer1">
+    <img
+      class="zeeguuLogo"
+      src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+      alt="Zeeguu Logo - The Elephant"
+    />
+  </div>
+  <div>
+    <form
+      id="reset_pass"
+      class="form-horizontal"
+      role="form"
+      action="reset_pass"
+      method="post"
+    >
+      <div class="outerContainer">
+        <div class="innerContainer authentificationBox">
+          <p id="authentificationBoxTitle">Reset Password</p>
+          <div class="inputField">
+            <label>Email</label>
+            <input
+              type="email"
+              name="email"
+              class="field"
+              id="email"
+              placeholder="Email"
+              value="{{email}}"
+            />
+          </div>
+
+          {% if code_active %}
+          <div class="inputField">
+            <label>Code</label>
+            <input
+              type="code"
+              class="field"
+              id="code"
+              name="code"
+              placeholder="Code you received over email"
+              value="{{code}}"
+            />
+          </div>
+
+          <div class="inputField">
+            <label>New Password</label>
+            <input
+              type="password"
+              class="field"
+              id="password"
+              name="password"
+              placeholder="New Password"
+            />
+          </div>
+
+          {% endif %}
+
+          <div class="inputField reset">
+            <button
+              type="submit"
+              name="reset_pass"
+              value="reset_pass"
+              class="resetButton loginButton"
+            >
+              Reset Password
+            </button>
+          </div>
+          {{ flash_messages() }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock %}

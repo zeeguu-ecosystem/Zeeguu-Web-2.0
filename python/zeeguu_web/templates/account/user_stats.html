@@ -1,0 +1,37 @@
+{% extends "layout_simple_white.html" %}
+
+{% set active_page = "user_stats" %}
+
+{% block body %}
+
+{% assets filters="cssmin", output="instance/login.css", "css/login.css"-%}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets -%}
+
+{% include  "sideBar.html" %}
+
+<div class="statsContainer" id="statsContainerID">
+
+    <script src="{{ url_for('static', filename='../static/js/d3.v3.min.js') }}" charset="utf-8"></script>
+    <script type="text/javascript"
+        src="{{ url_for('static', filename='../static/js/DIST-zeeguu_learner_graph_module.js') }}"
+        charset="utf-8"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='../static/js/auto_resize_feature.js') }}"
+        charset="utf-8"></script>
+
+    <div class="statsContent">
+        <h1 class="statsTitle">Your Statistics</h1>
+
+        <zeeguu_graph id="activity_graph" autoresize="true"></zeeguu_graph>
+        <br /><br /><br />
+    </div>
+
+    <script type="text/javascript">
+        var activity_graph_input_data = {{ bookmark_counts_by_date| safe }};
+        activity_graph("activity_graph_input_data", "#activity_graph", 12);
+    </script>
+
+
+</div>
+
+{% endblock %}

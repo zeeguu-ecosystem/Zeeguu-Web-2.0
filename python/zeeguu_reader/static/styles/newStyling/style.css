@@ -1,0 +1,7 @@
+button:focus {
+    outline: none;
+}
+
+button:active {
+    border-style: none;
+}

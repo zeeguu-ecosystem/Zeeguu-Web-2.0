@@ -1,0 +1,86 @@
+/* responsive queries */
+
+@media (max-width: 1000px) {
+    #footnotes{
+	    position: relative;
+    }
+}
+
+@media (max-width: 800px) {
+    .ex-container{
+        border-radius:0;
+        margin-top: 0;
+    }
+    .ex-progress{
+        border-radius: 0;
+    }
+    #ex-bar{
+        border-radius: 0px 15px 15px 0px;
+    }
+		#ex-status{
+			height: 95px;
+		}
+    .progress-module
+    {
+        margin-bottom: 0;
+        margin-top: 0;
+    }
+    .ex-footer{
+        border-radius:0;
+    }
+    .responsive-footer{
+        bottom: -100%;
+    }
+
+
+    .sweet-alert:before {
+        content : "";
+        display : block;
+        height : 17px;
+        width : 0;
+    }
+}
+
+@media (max-width: 400px) {
+    .responsive-btn {
+        font-size:12px;
+        padding:10px 10px;
+        margin-top: 19px;
+    }
+    .ex-progress{
+        height: 20px;
+    }
+    .checkmark{
+        width:40px;
+        height: 40px;
+    }
+    #ex-status{
+        height: 130px;
+    }
+    .ex-content{
+
+    }
+}
+
+@media (max-width: 360px) {
+    .ex-clickable {
+        min-height:50px;
+    }
+    .ex-input-box{
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    .clickable-symbol{
+        margin-top: 9px;
+        margin-bottom: 8px;
+    }
+    .responsive-btn {
+        height:100%;
+        margin-top: 9px;
+        margin-bottom: 8px;
+    }
+}
+
+
+
+

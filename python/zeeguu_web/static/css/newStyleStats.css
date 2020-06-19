@@ -1,0 +1,39 @@
+.statsContainer {
+    font-family: Montserrat;
+    font-weight: 300;
+    margin-left: 14em;
+    text-align: center;
+    line-height: 0.8em;
+    position: relative;
+    overflow-x: hidden;
+}
+
+#containerStats {
+    left: 16em;
+}
+
+.statsTitle {
+    margin-top: 1.5em;
+    font-weight: 400;
+    font-size: 4em;
+    text-align: center;
+}
+
+ h2, h3, h4 {
+    font-weight: 400;
+    color: black;
+}
+
+.row {
+    display: flex;
+    margin-right: -37px !important;
+    margin-left: -15px;
+    margin-top: 18em;
+}
+
+.col-xs-4.col-md-4 {
+    margin-left: 4em;
+}
+
+
+

@@ -1,0 +1,294 @@
+{% set active_page = "home" %} {% extends "layout_simple_white.html" %} {% block
+body %}
+
+<!-- Macros Used on this Page -->
+{% macro member(name, role) -%}
+<div class="member" xmlns="http://www.w3.org/1999/html"><b>{{ name }}</b></div>
+<div class="member">
+  <small>{{ role }}</small>
+</div>
+<br />
+{%- endmacro %}
+<!-- Macros Used on this Page -->
+
+<!-- Macros Used on this Page -->
+{% macro memberlink(name, role, link) -%}
+<div class="member" xmlns="http://www.w3.org/1999/html">
+  <b><a href="{{ link }}">{{ name }}</a></b>
+</div>
+<div class="member">
+  <small>{{ role }}</small>
+</div>
+<br />
+{%- endmacro %}
+<!-- Macros Used on this Page -->
+
+<nav>
+  <div id="login" class="loginHeader">
+    <p>Zeeguu</p>
+    <div class="signin">
+      <a href="{{ url_for('account.login') }}">Sign In</a>
+    </div>
+  </div>
+</nav>
+
+<div class="logoContainer">
+  <img class="logoElephant swing" src="../static/img/zeeguuLogo.svg" />
+  <h1>Zeeguu</h1>
+  <h2>
+    A research project designed to speed & fun up vocabulary learning in a new
+    language
+  </h2>
+
+  {% if not g.user %}
+  <button class="becomeBeta">
+    <a href="http://bit.ly/1UFL5GW">Become a Beta Tester</a>
+    </div>
+  </button>
+  {% endif %}
+</div>
+
+<!--THREE STEPS PRESENTATION-->
+
+<div class="howTo">
+  <h1>Our approach is designed around three fundamental principles</h1>
+  <div class="containers">
+    <div class="htContainer">
+      <div class="hithere">
+        <img class="iconHowTo" src="../static/img/findArticle.svg" />
+      </div>
+      <h2>Read Articles</h2>
+      <h3>about only the stuff you like</h3>
+      <p>
+        Unlike most traditional learning materials based on pre-defined,
+        standardized and let's admit it: boring texts, we think that you should
+        read only the stuff that you love: eBooks, blogs, articles and news in
+        the desired language. In each of these contexts and on any chosen
+        device, you should have translations of unfamiliar terms “at the touch
+        of a fingertip”.
+      </p>
+    </div>
+
+    <div class="htContainer">
+      <div class="hithere">
+        <img class="iconHowTo" src="../static/img/click.svg" />
+      </div>
+      <h2>Translate Words</h2>
+      <h3>and have them everywhere with you</h3>
+      <p>
+        Words that you have once translated, will be available to you always
+        (read as “from any of your devices”) and they will go into your own,
+        private dictionary. The information about the context where you
+        encountered a given new word will also be synchronized among the
+        applications and devices. There is no doubt we understand and remember
+        so much better words in context.
+      </p>
+    </div>
+
+    <div class="htContainer">
+      <div class="hithere">
+        <img class="iconHowTo" src="../static/img/correct.svg" />
+      </div>
+      <h2>Practice Vocabulary</h2>
+      <h3>with Personalized Exercices</h3>
+      <p>
+        Based on the texts you read, the words you translate, and lists of word
+        frequencies, Zeeguu will use machine learning to build a model of your
+        current vocabulary in the target language. Applying this model and using
+        spaced repetition, you will receive personalized exercises that will
+        help you learn, practice and retain the new words, ranked according to
+        their importance.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div class="articleContain">
+  <h1>Read More in our CHI'18 Paper</h1>
+  <a
+    href="https://www.researchgate.net/publication/322489283_As_We_May_Study_Towards_the_Web_as_a_Personalized_Language_Textbook"
+    target="_blank"
+  >
+    <img class="article" src="../static/img/chi-paper-cover.png" />
+  </a>
+</div>
+
+<!--NEWS-->
+
+<div class="newsContainer">
+  <h1>News</h1>
+
+  <div class="newsItem">
+    <span class="dateSpan new">(August 2019)</span>
+    <p>
+      Mircea will talk about Zeeguu at
+      <a href="https://sites.uclouvain.be/eurocall2019/" target="_blank"
+        >EuroCALL</a
+      >
+      and <a href="https://easeai.github.io" target="_blank">EASEAI</a>
+    </p>
+  </div>
+
+  <div class="newsItem">
+    <span class="dateSpan new">(April 2019)</span>
+    <p>
+      We have moved to
+      <a href="https://zeeguu.org" target="_blank">zeeguu.org</a>
+    </p>
+  </div>
+
+  <div class="newsItem">
+    <span class="dateSpan new">(April 2018)</span>
+    <p>
+      Mircea presents
+      <a
+        href="https://www.researchgate.net/publication/322489283_As_We_May_Study_Towards_the_Web_as_a_Personalized_Language_Textbook"
+        target="_blank"
+      >
+        a paper about Zeeguu</a
+      >
+      at CHI'18 in Montreal!
+    </p>
+  </div>
+
+  <div class="newsItem">
+    <span class="dateSpan new">(January 2018)</span>
+    <p>Paper about Zeeguu accepted to CHI 2018!</p>
+  </div>
+</div>
+
+<!--TEAM-->
+
+<div class="teamContainer">
+  <h1>Contributors</h1>
+
+  <small>
+    The project has benefited from the contributions and advice from many
+    people. Some of them are listed here:
+  </small>
+  <div class="teamMembers">
+    <div>
+      {{ member("Mircea Lungu", "Production, maintenance") }}
+    </div>
+    <div>
+      {{ member("Feiko Ritsema", "Topic Browser") }}
+    </div>
+    <div>
+      {{ member("Lars Holdijk", "API Design") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Dan Chirtoaca", "Universal Multilingual Reader") }}
+    </div>
+    <div>
+      {{ member("Alexander Lukjanenkovs", "Learner Feedback") }}
+    </div>
+    <div>
+      {{ member("Anca Lungu", "Linguistics") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Linus Schwab", "Android RSS Feed Reader") }}
+    </div>
+    <div>
+      {{ member("Jeroen van Engen", "Education Feedback") }}
+    </div>
+    <div>
+      {{ member("Mads Kristian Brodt Nielsen ", "Teacher Dashboard") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Sybren van Vliet", "Forgiving Exercise Feedback") }}
+    </div>
+    <div>
+      {{ member("Martin Avagyan", "Language Exercises") }}
+    </div>
+    <div>
+      {{ member("Luc van der Brand", "Universal Multilingual Reader") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Jorrit Oosterhof", "iOS News Reader") }}
+    </div>
+    <div>
+      {{ member("Karan Sethi", "Knowledge Estimator") }}
+    </div>
+    <div>
+      {{ member("Pascal Giehl", "Android Development") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Simon Marti", "Initial API and Chrome Extension") }}
+    </div>
+    <div>
+      {{ member("Wim Gombert", "Education Feedback") }}
+    </div>
+    <div>
+      {{ member("Alin Balutoiu", "Performance and Scalability") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Jonathan Sparvath", "Teacher Dashboard") }}
+    </div>
+    <div>
+      {{ member("Joël Grondman", "Personalized Difficulty Estimator") }}
+    </div>
+    <div>
+      {{ member("Carlos Paz", "Knowledge Dashboard") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Johan De Jager", "Translation Multiplexer") }}
+    </div>
+    <div>
+      {{ member("Ada Lungu", "UX and Web Design") }}
+    </div>
+    <div>
+      {{ member("Niels Haan", "Smartwatch Development") }}
+    </div>
+  </div>
+  <div class="teamMembers">
+    <div>
+      {{ member("Vlad Turbureanu", "Language Exercises") }}
+    </div>
+  </div>
+
+  <div class="acknowledgements">
+    <h1>Acknowledgements</h1>
+
+    <small>zeeguu.org is hosted in the Google Cloud Platform</small>
+    <br />
+
+    <small>Zeeguu uses many open source libraries and free APIs.</small>
+    <br />
+
+    <small>Some of them are listed below.</small>
+    <br />
+
+    <div class="other">
+      <div>
+        {{ member("Glosbe", "Online translation API") }}
+      </div>
+      <div>
+        {{ member("PyCharm", "Our Favorite IDE") }}
+      </div>
+      <div>
+        {{ member("Flask", "Web Development with Python") }}
+      </div>
+      <div>
+        {{ memberlink("Flask Monitoring Dashboard", "Internal API monitor",
+        "https://github.com/flask-dashboard") }}
+      </div>
+    </div>
+  </div>
+  <div class="footer"></div>
+</div>
+
+{% endblock %}

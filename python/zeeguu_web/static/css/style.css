@@ -1,0 +1,455 @@
+body {
+  font-size: 18px;
+  font-family: Montserrat;
+  margin: 0;
+}
+
+.whiteBody {
+  width: 100% !important;
+  padding: 0 !important;
+  scroll-behavior: smooth;
+}
+
+.loginHeader {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  height: 4em;
+  background: #ffbb54;
+  color: white;
+}
+
+.loginHeader p {
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-left: 1em;
+  margin-top: 0.6em;
+}
+
+.signin a {
+  color: #ffbb54;
+  font-size: 1em;
+  font-weight: 500;
+}
+
+.signin a:hover {
+  text-decoration: underline;
+}
+
+.signin {
+  background: white;
+  width: 6em;
+  height: 2em;
+  border-radius: 1em;
+  text-align: center;
+  line-height: 2em;
+  margin-top: 0.9em;
+  margin-right: 1em;
+}
+
+.dateSpan {
+  color: white;
+  font-size: 0.7em;
+  margin-right: 0.5em;
+  font-family: Montserrat;
+  margin-top: -0.7em;
+  text-align: center;
+}
+
+.logoContainer {
+  text-align: center;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.logoElephant {
+  padding: 1em;
+  height: auto;
+  width: 15em;
+  margin: 2em;
+}
+
+.swing {
+  transform-origin: top center;
+  animation: swing 2s ease 3;
+}
+@keyframes swing {
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logoContainer h1 {
+  color: #ffbb54;
+  margin-top: -0.5em;
+}
+
+.logoContainer h2 {
+  font-weight: 400;
+  font-size: 1.3em;
+  max-width: 18em;
+  margin: 2em 14em 1em 14em;
+}
+
+.becomeBeta {
+  height: 4em;
+  width: 25em;
+  background: #ffbb54;
+  border: 0.3em solid #ffbb54;
+  border-radius: 7em;
+  margin-bottom: 3em;
+  overflow: hidden;
+}
+
+.becomeBeta a {
+  font-family: Montserrat;
+  font-weight: 600;
+  font-size: 1.5em;
+  color: white;
+}
+
+.becomeBeta:hover {
+  background: white;
+  border: 0.3em solid #ffbb54;
+  color: #ffbb54;
+}
+.becomeBeta:hover a {
+  color: #ffbb54;
+}
+
+.aboutZeeguu {
+  display: flex;
+  flex-direction: column;
+  /*overflow-x:hidden;*/ 
+}
+
+.howTo {
+  background: #ffbb54;
+  color: white;
+  font-family: Montserrat;
+  text-align: center;
+  padding-bottom: 3em;
+}
+
+.howToAbout {
+  color: white;
+  font-family: Montserrat;
+  text-align: center;
+  padding-bottom: 3em;
+}
+
+.howTo h1 {
+  padding-top: 1em;
+  font-size: 1.7em;
+  padding-bottom: 0em;
+}
+
+.containers {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.htContainer {
+  background: white;
+  color: black;
+  width: fit-content;
+  height: auto;
+  margin: 1em;
+  text-align: center;
+  border-radius: 1em;
+  flex:1; 
+}
+
+.htContainer h3 {
+  font-size: 1.1em;
+  font-weight: 500;
+  padding-top: 0em;
+}
+
+.htContainer p {
+  font-size: 1em;
+  font-weight: 400;
+  line-height: 1.5em;
+  padding-left: 1.2em;
+  padding-right: 1.2em;
+}
+
+.iconHowTo {
+  padding: oem;
+  height: auto;
+  width: 10em;
+  margin: 2em;
+}
+
+.htContainer:hover .hithere {
+  animation: hithere 1s ease infinite;
+}
+@keyframes hithere {
+  30% {
+    transform: scale(1.2);
+  }
+  40%,
+  60% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+  50% {
+    transform: rotate(20deg) scale(1.2);
+  }
+  70% {
+    transform: rotate(0deg) scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.articleContain {
+  display: flex;
+  justify-content: space-around;
+}
+
+.articleContain h1 {
+  font-weight: 400;
+  margin-top: 1em;
+}
+
+.article {
+  border: 0.05em solid black;
+  width: 23em;
+  margin-top: 3em;
+  margin-right: 3em;
+}
+
+.newsContainer {
+  background: #ffbb54;
+  margin-top: 2em;
+  padding-top: 0.1em;
+  padding-bottom: 1em;
+}
+
+.newsContainer h1 {
+  font-size: 2em;
+  font-weight: 400;
+  margin-left: 0.9em;
+  color: white;
+}
+
+.newsItem {
+  display: flex;
+  margin-left: 2em;
+  margin-bottom: 0.5em;
+}
+
+.newsItem p {
+  padding-left: 1em;
+  font-size: 0.9em;
+}
+
+.newsItem a {
+  color: black;
+  font-weight: 600;
+}
+
+.new {
+  width: 8em;
+  line-height: 5.5em;
+}
+
+.teamContainer {
+  text-align: center;
+}
+
+.teamContainer h1 {
+  font-size: 2em;
+  font-weight: 400;
+}
+
+.teamMembers {
+  display: flex;
+  justify-content: center;
+}
+
+.teamMembers div {
+  margin-top: 1em;
+  width: 15em;
+}
+
+.member b a {
+  color: black;
+}
+
+.acknowledgements {
+  margin-top: 2em;
+}
+
+.acknowledgements small {
+  line-height: 2em;
+}
+
+.other {
+  display: flex;
+  justify-content: center;
+}
+
+.other div {
+  margin-top: 1em;
+  margin-bottom: 0.5em;
+  width: 15em;
+}
+
+.footer {
+  background: #ffbb54;
+  height: 3em;
+  width: 100%;
+}
+
+#aboutContainer {
+  background-color: white;
+  height: 100%;
+  margin-left:10em; 
+}
+
+#aboutContainer h1 {
+  adding-top: 0.3em;
+  font-family: Montserrat;
+  color: #ffbb54;
+  font-weight: 200;
+  font-size: 2.5em;
+  line-height: 1.5em;
+  letter-spacing: 0.1em;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.aboutHt {
+  background-color: #ffbb54;
+  color: white;
+  margin: 0.5em;
+  height: 24em;
+}
+
+.aboutHt h3 {
+  color: white;
+  margin-top: 3em;
+  margin-bottom: 1.5em;
+  font-size: 0.9em;
+}
+
+.aboutHt p  {
+  font-size: 0.85em;
+  line-height: 1.8em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+a:hover {
+  cursor: pointer;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+button:active {
+  outline: none;
+  border-style: none;
+}
+
+button:focus {
+  border-style: none;
+  outline: none;
+}
+
+input:focus {
+  outline: none;
+  border-style: none;
+}
+
+.noWordsYet {
+  margin-top: 3em;
+}
+
+.icon-search {
+  cursor: pointer;
+  position: relative;
+  transform: scale(1);
+  margin: auto;
+  height: 4em;
+  width: 3em;
+  margin-bottom: 25px;
+  margin-top: 3em;
+}
+
+svg {
+  overflow: visible;
+  position: absolute;
+  left: -15px;
+}
+
+circle,
+line,
+path {
+  overflow: visible;
+  position: absolute;
+  top: 0;
+  left: 0;
+  fill: transparent;
+  stroke: #ffd047;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+
+line {
+  position: absolute;
+}
+
+.notFound {
+  animation: notFound 1s 1;
+  transform-origin: 37.4% 39.2%;
+  transform: rotate(0deg);
+}
+
+@keyframes notFound {
+  0% {
+    transform: rotate(30deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0;
+  }
+  16% {
+    transform: rotate(170deg);
+  }
+  24% {
+    opacity: 1;
+  }
+  40% {
+    transform: rotate(-90deg);
+  }
+  78% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}

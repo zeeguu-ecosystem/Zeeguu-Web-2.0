@@ -1,0 +1,152 @@
+{% include "articleHeader.html" %}
+
+<body onload="sideBarLoad()" onresize="resizeShowOptions()">
+  <div class="main-container" id="main-containerID">
+    {% include "headerMenu.html" %}
+    {% include "sideBar.html" %}
+    <div class="widthOfColumn">
+      <div class="searchExecuted">
+        <nav>
+          <a id="searchIcon-LinkID" onclick="searchIconFunction()">
+            <img class="searchIcon" src="{{ url_for('reader_blueprint.static',filename='images/SVGs/searchIcon.svg') }}"
+              alt="search icon" />
+          </a>
+          <div class="containerOptionsSorting">
+            <div class="options" id="optionsID">
+              <br /><br /><br />
+              <div class="interestButton">
+                <button type="button" class="orangeButton show-topic-subscriber">
+                  <span class="orangeButtonText">Interests</span>
+                </button>
+              </div>
+              <div id="searchesList"></div>
+              <div id="topicsList">
+                <div id="any_topic" style="display:block;">
+                  &nbsp;&nbsp;&nbsp;&nbsp;<i style="color:gray">Showing all Interests...</i>
+                </div>
+              </div>
+              <div style="font-size: xx-small">&nbsp;</div>
+              <div class="interestButton">
+                <button type="button" class="orangeButton show-filter-subscriber">
+                  <span class="orangeButtonText">
+                    <nobr>Non-Interests</nobr>
+                  </span>
+                </button>
+              </div>
+              <div id="searchesFilterList"></div>
+              <div id="topicsFilterList"></div>
+              <div style="font-size: xx-small">&nbsp;</div>
+              <br />
+              <div class="seachField">
+                <input class="searchTextfieldInput" type="text" id="search-expandable"
+                  placeholder="Search all articles" />
+              </div>
+            </div>
+            <div class="sortingCategories" id="sortingBox">
+              <div class="sortContainer">
+                <p id="sortby"> Sort by:</p>
+                {% include  "sorting.html" %}
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    <div class="widthOfColumn">
+      <div class="tagsOfInterests">
+        <div class="interestsSettings">
+          <button class='addInterestButton'>&#xFF0B;</button>
+          <button class='closeTagsOfInterests'>save</button>
+        </div>
+      </div>
+    </div>
+    <div class="widthOfColumn">
+      <div class="tagsOfNonInterests">
+        <div class="interestsSettings">
+          <button class='addNonInterestButton'>&#xFF0B;</button>
+          <button class='closeTagsOfNonInterests'>save</button>
+        </div>
+      </div>
+    </div>
+    <div class="widthOfColumn">
+      <main class="articlesMainContainer">
+        <section class="articleTab is-active" id="inbox">
+          <div class="page-content">
+            <ul id="searchNotification" class="searchNotification"></ul>
+            <ul id="articleLinkList" class="articleLinkList"></ul>
+            <br />
+            <div id="emptyArticleListImage" class="emptyPage" style="display: none;">
+              <div class="icon-search">
+                <svg version="1.1" viewBox="0 0 50 50">
+                  <g>
+                    <g class="notFound">
+                      <circle class="st0" cx="25" cy="25" r="17.1" />
+                      <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9" />
+                    </g>
+                </svg>
+              </div>
+              <p> No articles</p>
+            </div>
+            <div class="loader">
+              <div class="circle loading"></div>
+              <p>Loading articles</p>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <!-- Template for an article link. -->
+    <script id="articleLink-template" type="text/template">
+      <li class="{% raw %}{{ wordCount }}{% endraw %} {% raw %}{{articleDifficulty}}{% endraw %} fadeoutOnClick articleLinkEntry  {% raw %}{{alreadyOpenedClass}}{% endraw %}"
+      articleLinkFeedID="{% raw %}{{articleLinkFeedID}}{% endraw %}">
+        <a href="{{ url_for('reader_blueprint.get_article') }}?articleID={% raw %}{{ articleLinkID }}{% endraw %}">
+          <div class="articleLinkHeader">
+            <div class="articleLinkTitle headerElement">{% raw %}{{ articleLinkTitle }}{% endraw %}</div>
+            <div class="articleLinkDifficulty headerElement">
+              <span class="difficulty-level articleLinkDifficultyText"> {% raw %}{{articleDifficulty}}{% endraw %} </span>
+              <span class="articleLinkDifficultyText"> {% raw %}{{ wordCount }}{% endraw %}</span>
+            </div>
+          </div>
+          <div class="articleLinkSummary">{% raw %}{{articleSummary}}{% endraw %}</div>
+          <div class="articleTopics">
+            <div class="articleLinkImage">
+              <img src="{% raw %}{{articleIcon}}{% endraw %}" class="feedIcon"/>
+            </div>
+            <span class="publishingTime">({% raw %}{{articleLinkPublished}}{% endraw %})</span>
+            {% raw %}{{#articleTopics}}{% endraw %}
+            <span class="singleTopicTag">{% raw %}{{topic}}{% endraw %}</span>
+            {% raw %}{{/articleTopics}}{% endraw %}
+          </div>
+        </a>
+      </li>
+      <div class="articleLinkSpacer"></div>
+    </script>
+
+    <script id="search-notification-template" type="text/template">
+      <li class="fadeoutOnClick articleLinkEntry search-notification-box">
+        <div class="articleLinkHeader">
+          <div class="innerSearchBox">
+            <div class="searchText headerElement"> {% raw %}{{ displayText }}{% endraw %}</div>
+            <button class='deleteSearch headerElement'>X</button>
+          </div>
+        </div>
+      </li>
+      <div class="articleLinkSpacer"></div>
+    </script>
+
+    <!-- Template for custom interests and non-interests -->
+    <script id="subscription-template-search" type="text/template">
+      <div searchRemovableID="{% raw %}{{ id }}{% endraw %}">
+          <button type="button" class="interests custom">
+            <span class="addableTitle">{% raw %}{{ search }}{% endraw %}</span>
+          </button>
+      </div>
+    </script>
+
+    <!-- Dialog windows for adding interests or non-interests -->
+    {% include 'filters.html' %}
+
+</body>
+
+</html>

@@ -1,0 +1,150 @@
+@media screen and (max-width: 500px) {
+  body {
+    position: unset !important;
+  }
+
+  .teamMembers {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1 2 3;
+    flex-flow: wrap;
+  }
+
+  .logoContainer h2 {
+    margin: 0;
+    margin-bottom: 2em;
+    font-size: 1em;
+    padding: 0.5em 1em;
+  }
+
+  .teamContainer h1 {
+    font-size: 1.6em;
+    font-weight: 500;
+  }
+  #aboutContainer{
+    margin-left:unset;
+  }
+
+  .howTo h1 {
+    padding-top: 1.5em;
+    font-size: 1em;
+    font-weight: 300;
+    padding-bottom: 0.5em;
+    padding: 1em;
+  }
+  .containers {
+    flex: 1 2 3;
+    width: inherit;
+    display: inline-flex;
+    flex-wrap: wrap;
+  }
+
+  .htContainer {
+    background: white;
+    color: black;
+    width: fit-content;
+    height: fit-content;
+    margin: 1em;
+    text-align: center;
+    border-radius: 3em;
+  }
+
+  .htContainer h3 {
+    font-size: 1em;
+    font-weight: 500;
+    padding-top: 1em;
+    padding: 0.6em 2em;
+  }
+
+  .other {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+  }
+
+  .articleContain {
+    display: block;
+    text-align: center;
+  }
+
+  .article {
+    border: 0.05em solid black;
+    width: 82vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .newsItem {
+    margin-left: 0.3em;
+    flex-direction: column;
+  }
+
+  .new {
+    width: 15em;
+    line-height: 3.5em;
+  }
+
+  .dateSpan {
+    text-align: left;
+  }
+
+  /***** ACCOUNT SETTINGS ***/ 
+  #settingsBody{
+    margin:unset; 
+    padding:unset; 
+    width: unset; 
+  }
+
+  .content{
+    margin-left: unset;
+    width: unset;
+    padding:unset; 
+
+  }
+
+  .formSettings{
+    width: unset;
+    margin:auto; 
+    padding: 1em 1em;
+  }
+
+  select{
+    border-radius: 4px;
+    padding: 1.5vw 0vw; 
+ 
+  }
+
+  /**** USER STATS ****/ 
+  .statsContainer{
+    margin-left: 0em !important;
+    height: 100vh;
+  }
+
+  #containerStats{
+    margin-left:0em !important; 
+    left:0em !important; 
+  }
+
+  .row{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    margin-right: -37px!important;
+    margin-left: unset;
+    margin-top: 18em;
+    line-height: unset;
+    text-align: left;
+    height: unset !important; 
+    padding: unset !important; 
+}
+
+.col-xs-4, .col-md-4 {
+  margin: unset;
+  float: unset;
+  padding: unset !important;
+  margin-left: 2em;
+}
+
+  
+}

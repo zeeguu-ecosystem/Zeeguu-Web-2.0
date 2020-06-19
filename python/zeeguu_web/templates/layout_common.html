@@ -1,0 +1,88 @@
+<!------------------------------------>
+<!-- Jinja Macros Used on this Page -->
+<!------------------------------------>
+
+{% macro menu_item(tab_name, url, text) -%}
+{% if active_page == tab_name %}
+<li class="active"><a href="{{ url_for(url) }}">{{ text }}</a></li>
+{%  else %}
+<li><a href="{{ url_for(url) }}">{{ text }}</a></li>
+{% endif %}
+{%- endmacro %}
+
+{% macro flash_messages() -%}
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-warning">
+    <button class="close" data-dismiss="alert">×</button>
+    {{ message }}
+</div>
+{% endfor %}
+{% endif %}
+{% endwith %}
+{%- endmacro %}
+
+{% macro header() -%}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Zeeguu</title>
+
+    <link href="{{ url_for('static', filename='fonts/montserrat.css') }}" type="text/css" rel="stylesheet" />
+
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+
+    {% assets filters="cssmin", output="instance/style.css", "css/libs/select2.css",  "css/style.css",  "css/newStyleWords.css", "css/responsiveFront.css", "css/newStyleStats.css"-%}
+    <link rel="stylesheet" href="{{ ASSET_URL }}" />
+    {% endassets -%}
+
+    {% assets "js/jquery.js", "js/jquery.validate.js", "js/select2.js", "js/sla.js" -%}
+    <script src="{{ ASSET_URL }}"></script>
+    {% endassets -%}
+
+    <link rel="chrome-webstore-item"
+        href="https://chrome.google.com/webstore/detail/zeeguu/ckncjmaednfephhbpeookmknhmjjodcd">
+
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+
+    <script type="text/javascript" src="/static/js/MobileHelpers.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'UA-89557275-2');
+    </script>
+
+
+
+</head>
+
+{%- endmacro %}
+
+
+{%  macro no_words_yet() %}
+<div>
+    <div class="icon-search">
+        <svg version="1.1" viewBox="0 0 50 50">
+            <g>
+                <g class="notFound">
+                    <circle class="st0" cx="25" cy="25" r="17.1" />
+                    <line class="st0" x1="53.4" y1="51.6" x2="38.8" y2="36.9" />
+                </g>
+        </svg>
+    </div>
+
+    <p class="noWordsYet" style="text-align: center;">You have no words.
+        <br>
+        Start reading articles to expand your vocabulary!
+    </p>
+
+
+</div>
+{%- endmacro %}

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Zeeguu</title>
+
+  <link rel="stylesheet" type="text/css" href="../../static/css/newStyleSettings.css" />
+
+  <link rel="stylesheet" type="text/css" href="../../static/css/responsiveFront.css" />
+
+  <!--FONT LINK-->
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:300,300i,400&display=swap" rel="stylesheet" />
+
+  {% assets "js/jquery.js", "js/jquery.validate.js", "js/select2.js",
+    "js/sla.js" -%}
+  <script src="{{ ASSET_URL }}"></script>
+  {% endassets -%}
+
+  <link rel="chrome-webstore-item"
+    href="https://chrome.google.com/webstore/detail/zeeguu/ckncjmaednfephhbpeookmknhmjjodcd" />
+
+  <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+  <script type="text/javascript" src="/static/js/MobileHelpers.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+
+    gtag("config", "UA-89557275-2");
+  </script>
+</head>
+
+<body id="settingsBody" onload="sideBarLoad()">
+  {% macro render_field(field) %}
+  <dt class="inputLabel" style="margin-right: 10px; float: left;">
+    {{ field.label }}
+  </dt>
+  <dd class="inputField">{{ field(**kwargs)|safe }}</dd>
+  <div style="clear: both; height: 10px;"></div>
+  {% endmacro %} {% macro render_language(field) %}
+  <tr>
+    <td>
+      <span style="text-align: right; margin-right: 10px; float: left;">{{ field.label }}
+      </span>
+    </td>
+
+    <td>
+      {{ field(**kwargs)|safe }} {% if field.errors %}
+      <ul class="errors">
+        {% for error in field.errors %}
+        <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </td>
+  </tr>
+  <div style="clear: both; height: 10px;"></div>
+
+  {% endmacro %} {% set active_page = "my_account" %} {% block body %} {%
+    include "sideBar.html" %}
+
+  <div class="content" id="settingsContainer">
+    <form method="post" class="formSettings">
+      <h1 class="category">Account Settings</h1>
+      <small>
+        {{ render_field(form.name) }} {{ render_field(form.email) }} {{
+          render_field(form.native_language) }} {{
+          render_field(form.learned_language) }}
+      </small>
+
+      <h1 class="category">Language Levels</h1>
+      {% if not at_least_one_cefr_level %}
+      <div class="pleaseSelect">
+        Please select a level for your learned languages
+        <br />
+      </div>
+      <div style="clear: both; height: 10px;"></div>
+      {% endif %}
+
+      <small>
+        {{ render_language(form.da_cefr_level) }} {{
+          render_language(form.de_cefr_level) }} {{
+          render_language(form.en_cefr_level) }} {{
+          render_language(form.es_cefr_level) }} {{
+          render_language(form.fr_cefr_level) }} {{
+          render_language(form.it_cefr_level) }} {{
+          render_language(form.nl_cefr_level) }} {{
+          render_language(form.pl_cefr_level) }} {{
+          render_language(form.pt_cefr_level) }} {{
+          render_language(form.ro_cefr_level) }} {{
+          render_language(form.cn_cefr_level) }}
+      </small>
+
+      <button class="saveButton" type="submit" value="Save">Save</button>
+    </form>
+  </div>
+
+  {% endblock %}
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<!--Card template using Mustache.js-->
+<script>document.body.style.backgroundColor = "#e9e9e9";</script>
+<div class = "empty-page-content">
+    <div class="col-xs-12 col-sm-12 col-md-12" id = "emptyPage">
+        <div class = "row empty-page-container">
+            {{#icon}}<div class="empty-page-content-img" style = "background-image: url({{icon}});" ></div>{{/icon}}
+            {{#title}}<span class = "empty-page-title h3">{{title}}</span>{{/title}}
+            {{#info}}<span class = "empty-page-info h5">{{info}}</span>{{/info}}
+            {{#btnPrime}}<a type="button" rel="external" class="btn btn-primary" href = "{{btnPrime}}">{{btnPrimeText}}</a>{{/btnPrime}}
+            {{#btnSecond}}<a type="button" class="btn btn-secondary btn-secondary-empty-page" href = "{{btnSecond}}">{{btnSecondText}}</a>{{/btnSecond}}
+        </div>
+    </div>
+</div>

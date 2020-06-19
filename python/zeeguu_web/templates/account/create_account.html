@@ -1,0 +1,142 @@
+{% extends "layout_simple.html" %}
+
+{% set active_page = "create_account" %}
+
+{% block body %}
+
+{% assets filters="cssmin", output="instance/login.css", "css/login.css"-%}
+<link rel="stylesheet" href="{{ ASSET_URL }}" />
+{% endassets -%}
+
+<div class="loginPG">
+    <div class="logoContainer1">
+        <img class="zeeguuLogo" src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+            alt="Zeeguu Logo - The Elephant" />
+    </div>
+
+    <form id="create_account" class="form-horizontal" action="" method="post" class="inputField">
+
+        <div>
+
+            <fieldset>
+                <div>
+
+                    <div class="innerContainer authentificationBox createAccount">
+
+                        <p id="authentificationBoxTitle" class="createTitle">Create Account</p>
+
+
+                        {{ flash_messages () }}
+
+                        <div class="inputField">
+                            <label class="smallerText">Invite Code<small class="small"> (contact <a class="mail"
+                                        href="mail:zeeguu.team@gmail.com">zeeguu.team@gmail.com</a> for
+                                    code)</small></label>
+                            <input autofocus id="code" name="code" type="code" placeholder="Code" class="field long" />
+                        </div>
+
+                        <br />
+
+                        <div class="inputField">
+                            <label>Name</label>
+                            <input type="text" name="name" id="name" placeholder="Name" class="field custom"
+                                rel="popover" />
+                        </div>
+
+                        <div class="inputField">
+                            <label>Email</label>
+                            <input type="email" name="email" id="email" placeholder="Email address" class="field custom"
+                                rel="popover" />
+                        </div>
+
+                        <div class="inputField">
+                            <label>Choose a Password</label>
+                            <input id="password" name="password" type="password" placeholder="Password"
+                                class="field custom" />
+                        </div>
+
+                        <br />
+
+                        <div class="inputField">
+                            <label class="smallerText">The language you are learning</label>
+                            <select autofocus id="language" required name="language" class="field custom">
+                                {% for l in languages %}
+                                <option {% if l[0] == default_learned %} selected {% endif %} value="{{l[0]}}">{{l[1]}}
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+                        <div class="inputField">
+                            <label class="smallerText">Your base language <small>(in which you receive
+                                    translations)</small></label>
+                            <select autofocus id="native_language" required name="native_language" class="field custom">
+                                {% for l in native_languages %}
+                                <option value="{{l[0]}}">{{l[1]}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+
+
+                        <br />
+
+                        <div>
+                            <h3 class="privacyNotice">Privacy Notice</h3>
+
+                            <small>
+                                <p>
+                                    Zeeguu is a research project. Our goal is to
+                                    discover ways in which learning a foreign
+                                    language is more fun.
+                                </p>
+
+                                <p>
+                                    The <b>only personal information</b> that we store about you
+                                    is your <b>email</b>. We do not share it with anybody.
+                                    We need it to send you a survey and possibly announcements
+                                    later.
+                                </p>
+
+                                <p>
+                                    We store <b>anonymized data</b> about your
+                                    <b>interactions with foreign texts and exercises</b>
+                                    together with the <b>times of these interactions</b>.
+                                    They help us <b>estimate</b> the words you know,
+                                    the ones you should learn, recommend texts,
+                                    and approximate time spent studying.
+                                </p>
+
+                                <p>
+                                    We might make the anonymized interaction data available for other researchers too.
+                                    In
+                                    research,
+                                    data can be even more important than algorithms.
+                                </p>
+
+
+
+                            </small>
+
+                        </div>
+
+
+                        <br />
+
+                        <!--<br/>-->
+                        <div class="inputField createAccBtn">
+                            <button type="submit" name="create_account" value="Create Account"
+                                class="loginButton resetButton">Create Account</button>
+                        </div>
+
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+
+        <div class="container">
+
+        </div>
+
+    </form>
+</div>
+{% endblock %}

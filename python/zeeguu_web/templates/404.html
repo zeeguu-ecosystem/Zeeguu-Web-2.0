@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Zeeguu Error</title>
+
+    <link href="{{ url_for('static', filename='fonts/montserrat.css') }}" type="text/css" rel="stylesheet" />
+    <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon.ico') }}">
+    <link
+    rel="stylesheet"
+    type="text/css"
+    href="../../static/css/404.css"
+  />
+</head>
+<body>
+    <div class="container">
+
+        <div class="logoContainer1">
+            <img
+              class="zeeguuLogo swing"
+              src="{{ url_for('reader_blueprint.static',filename='images/zeeguuLogo.svg') }}"
+              alt="Zeeguu Logo - The Elephant"
+            />
+          </div>
+
+          <h1>Oops, we cannot find this page!</h1>
+
+    <div class="buttonToRead">
+<a href="/read" rel="external">Back to Articles</a>
+          </div>
+    </div>
+</body>
+</html>

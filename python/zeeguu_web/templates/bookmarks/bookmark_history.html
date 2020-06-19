@@ -1,0 +1,69 @@
+{% macro bookmark_history(user) -%}
+
+
+{% set dates, urls_by_date, texts_by_url = user.bookmarks_by_url_by_date() %}
+
+{% for date in dates %}
+<div class="row col-md-offset-0 col-md-10">
+    <b> {{ date.strftime("%A, %d %B %Y") }}</b>
+</div>
+{% for url in urls_by_date[date] %}
+
+<div class="row col-md-offset-1 col-md-10">
+    <h4><a href="{{ url.as_string() }}">{{ url.title_if_available() }} </a></h4>
+
+
+    <table class="table table-striped table-no-borders">
+
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+
+        {% for text in texts_by_url[url] %}
+        <tr>
+            <td>
+
+                {% for bookmark in text.all_bookmarks(user) %}
+
+                <span id="star{{ bookmark.id }}">
+                    {% if bookmark.starred %}
+
+                    <a href="javascript:void(0);" onclick="unstarBookmark({{ bookmark.id }})">
+                        <img src="{{ url_for('static', filename='img/star.svg') }}" alt="star" />
+                    </a>
+                    {% else %}
+                    <a href="javascript:void(0);" onclick="starBookmark({{ bookmark.id }})">
+                        <img src="{{ url_for('static', filename='img/star_empty.svg') }}" alt="star" />
+                    </a>
+
+
+                    {% endif %}
+
+
+
+                </span>
+
+                <b>{{ bookmark.origin.word }} -- {{ bookmark.translation.word }}</b><br />
+
+                {% endfor %}
+
+                <div style="padding-left: 20px;">
+                    {{ text.content }}
+                </div>
+
+
+            </td>
+        </tr>
+
+        {% endfor %}
+    </table>
+</div>
+
+{% endfor %}
+
+{% endfor %}
+
+
+{%- endmacro %}

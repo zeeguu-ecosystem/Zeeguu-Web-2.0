@@ -1,0 +1,85 @@
+* {
+  background-color: #ffbb54;
+  color: white;
+  font-family: Montserrat;
+}
+
+.container {
+  height: 100vh;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
+}
+
+.container h1 {
+  margin: 1.5em;
+  text-align: center;
+}
+
+.zeeguuLogo {
+  margin: 2em;
+  width: 10em;
+}
+
+.swing {
+  transform-origin: top center;
+  animation: swing 2s ease 3;
+}
+@keyframes swing {
+  20% {
+    transform: rotate(15deg);
+  }
+  40% {
+    transform: rotate(-10deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.buttonToRead {
+  position: relative;
+  width: 10em;
+  height: 1.8em;
+  background-color: #ffffff;
+  border-radius: 1.5em;
+  border: 0.2em solid white;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-bottom: 0.8125em;
+  padding-top: 0.5em;
+}
+
+.buttonToRead a {
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1em;
+  line-height: 1.25em;
+  text-align: center;
+  background-color: #ffffff;
+  color: #ffbb54;
+  text-decoration: none;
+  margin: 5px;
+}
+
+.buttonToRead:hover {
+  background: #ffbb54;
+  border: 0.2em solid white;
+  color: #ffbb54;
+}
+
+.buttonToRead:hover a {
+  background: #ffbb54;
+  color: white;
+}
