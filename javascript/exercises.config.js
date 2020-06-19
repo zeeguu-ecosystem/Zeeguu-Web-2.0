@@ -6,11 +6,11 @@ var inProduction = process.env.NODE_ENV === 'production';
 
 module.exports = {
 	entry: {
-		appEntry: './exercises/app.js'
+		exercises: './exercises/app.js'
     },
 	output: {		
 		path: path.join(__dirname, '../python/zeeguu_exercises/static/js/dist'),
-		filename: '[name].entry.js',
+		filename: '[name].js',
 	},
 	module: {
 	 rules: [
