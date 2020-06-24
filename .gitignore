@@ -4,3 +4,5 @@
 python/zeeguu_reader/static/scripts/dist/css/subscription*
 python/zeeguu_reader/static/scripts/dist/subscription*
 python/zeeguu_exercises/static/js/dist/exercises*
+python/zeeguu_reader/static/scripts/dist/translation*
+python/zeeguu_reader/static/scripts/dist/css/translation*
