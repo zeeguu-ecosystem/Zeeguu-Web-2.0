@@ -98,8 +98,8 @@ function activate_last_used_tab_if_available() {
 /* When the document has finished loading,
  * bind all necessary listeners. */
 $(document).ready(function () {
-  // starredArticleList.load();
-  // cohortArticleList.load();
+
+
   interestSubscriptionList.load();
   interestSubscriber.load();
   nonInterestSubscriptionList.load();
