@@ -1,39 +1,39 @@
 {
   "name": "zeeguu-web-2.0-js",
   "version": "1.0.0",
-  "description": "Article Reader for the Zeeguu platform",
   "description": "Javascript code for the Zeeguu Web 2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mircealungu/Unified-Multilanguage-Reader.git"
     "url": "https://github.com/zeeguu-ecosystem/Zeeguu-Web-2.0.git"
   },
   "scripts": {
-    "reader_dev": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config reader.config.js --watch",
-    "exercises_dev": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config exercises.config.js --watch",
+    "reader_watch": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config reader.config.js --watch",
+    "exercises_watch": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config exercises.config.js --watch",
+    "dev": "concurrently --kill-others \"npm run reader_watch\" \"npm run exercises_watch\""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@babel/plugin-transform-runtime": "7.0.0-beta.46",
-    "@babel/preset-env": "7.0.0-beta.46",
-    "babel-loader": "8.0.0-beta.2",
+    "@babel/core": "^7.10.3",
     "@babel/plugin-transform-runtime": "^7.0.0",
     "@babel/preset-env": "^7.0.0",
-    "babel-loader": "8.1.0",
+    "babel-loader": "^8.1.0",
+    "concurrently": "^5.2.0",
     "css-loader": "^3.4.2",
     "extract-text-webpack-plugin": "4.0.0-beta.0",
     "file-loader": "0.10.1",
     "loggly-jslogger": "2.2.2",
     "moment": "2.22.1",
-    "remove-accents": "0.4.2",
     "node-sass": "^4.13.1",
+    "remove-accents": "0.4.2",
     "sass-loader": "6.0.7",
     "style-loader": "0.16.1",
     "sweetalert": "1.1.3",
     "url-loader": "^3.0.0",
-    "webpack-cli": "^3.3.11"
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "page": "^1.11.6"
   },
   "dependencies": {
     "jquery": "3.4.0",
