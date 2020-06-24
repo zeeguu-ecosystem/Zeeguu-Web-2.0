@@ -10,18 +10,15 @@ import tempfile
 if sys.version_info[0] < 3:
     raise Exception("Must be using Python 3")
 
+ZEEGUU_API = os.environ.get('ZEEGUU_API') or exit(-1)
+print(" == Web running with API: " + ZEEGUU_API)
+
 # *** Starting the App *** #
 app = CrossDomainApp(__name__)
 
 config_file = os.environ['ZEEGUU_WEB_CONFIG']
 app.config.from_pyfile(config_file, silent=False)
 configuration = app.config
-
-assert "ZEEGUU_API" in app.config
-
-print(" == Web running with API: " + app.config['ZEEGUU_API'])
-# the umr blueprint needs to have the ZEEGUU_API in the os.environ['ZEEGUU_API']
-os.environ['ZEEGUU_API'] = app.config['ZEEGUU_API']
 
 from .account import account
 from .bookmarks import bookmarks_blueprint
@@ -64,6 +61,7 @@ def instance_path(app):
 @app.errorhandler(404)
 def error404(error):
     return flask.render_template("404.html"), 404
-    
+
+
 instance = flask.Blueprint("instance", __name__, static_folder=instance_path(app))
 app.register_blueprint(instance)

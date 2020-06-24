@@ -2,7 +2,7 @@ import $ from 'jquery';
 import { readCookie } from './cookieWorks';
 
 //'https://zeeguu.unibe.ch/api';
-const ZEEGUU_SERVER = 'http://localhost:9001';
+const ZEEGUU_SERVER = ZEEGUU_API;
 const ZEEGUU_SESSION = 'sessionID';
 
 /** Get a list of recommended feeds. */

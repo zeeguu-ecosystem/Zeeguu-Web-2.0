@@ -1,6 +1,7 @@
 import os
 
-ZEEGUU_API = os.environ.get('ZEEGUU_API') or 'http://localhost:9001'
+print(os.environ)
+ZEEGUU_API = os.environ.get('ZEEGUU_API')
 print(" == UMR running with API: " + ZEEGUU_API)
 
 # there is not need for a full url since currently the reader

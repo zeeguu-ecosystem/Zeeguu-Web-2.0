@@ -8,6 +8,8 @@
   },
   "scripts": {
     "dev": "./node_modules/.bin/webpack",
+    "reader_dev": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config reader.config.js --watch",
+    "exercises_dev": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config exercises.config.js --watch",
     "production": "NODE_ENV=production webpack",
     "watch": "npm run dev -- --watch",
     "heroku-postbuild": "webpack --progress"

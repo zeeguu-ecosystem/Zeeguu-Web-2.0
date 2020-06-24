@@ -6,7 +6,7 @@
 export default {
     /*********************** Exercise API Parameters **************************/
 
-    ZEEGUU_API: 'http://localhost:9001',
+    ZEEGUU_API: ZEEGUU_API,
     ZEEGUU_SESSION_ID: 'sessionID',
     ZEEGUU_DEFAULT_COOKIE_EXPIRATION: 21, //days
     ZEEGUU_DEFAULT_SESSION: '00055320',//  00055320-french 00026435 00926044 34563456 11010001
@@ -29,7 +29,7 @@ export default {
 
     /** Outcome types for exercise */
     ZEEGUU_EX_OUTCOME_CORRECT: '/Correct',
-	ZEEGUU_EX_OUTCOME_WRONG: '/Wrong',
-	ZEEGUU_EX_OUTCOME_HINT: '/Asked_for_hint',
+    ZEEGUU_EX_OUTCOME_WRONG: '/Wrong',
+    ZEEGUU_EX_OUTCOME_HINT: '/Asked_for_hint',
 
 };

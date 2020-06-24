@@ -37,6 +37,7 @@ module.exports = {
 	},
 	plugins: [
 		new ExtractTextPlugin('css/[name]-' + getVersion() + '.css'),
+		new webpack.DefinePlugin({"ZEEGUU_API": JSON.stringify(process.env.ZEEGUU_API)})
 	],
 	stats: {
 		colors: true

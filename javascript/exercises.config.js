@@ -20,6 +20,9 @@ module.exports = {
 		 }
 	 ]
 	},
+	plugins: [
+		new webpack.DefinePlugin({"ZEEGUU_API": JSON.stringify(process.env.ZEEGUU_API)})
+	],	
 	stats: {
 		colors: true
 	},

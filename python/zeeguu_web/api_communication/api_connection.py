@@ -36,11 +36,11 @@ def _check_response(response):
 
 
 def _api_path(path):
-    from zeeguu_web.app import configuration
-    zeeguu_path = configuration.get("ZEEGUU_API")
-    if zeeguu_path.endswith("/"):
-        return zeeguu_path + path
-    return zeeguu_path + "/" + path
+    from zeeguu_web.app import ZEEGUU_API
+
+    if ZEEGUU_API.endswith("/"):
+        return ZEEGUU_API + path
+    return ZEEGUU_API + "/" + path
 
 
 def _api_call(function, path, payload={}, params={}, session_needed=False, session=None):
