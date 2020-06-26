@@ -18,14 +18,16 @@ page('/*', notFound);
 
 /******************* Page Settings **********************/
 page.exit('*', backFunction);
-page({hashbang:true});
+page({hashbang: true});
 page.start();
 
 /********************** Handlers ***********************/
 
 function redirect() {
     page.redirect("/practice");
+    console.log("redirected...");
 }
+
 /**
  * Main starter screen route
  * */
@@ -38,7 +40,7 @@ function index() {
  * */
 function getEx() {
     //For now hand codded exercise generator
-    window.onload = new Generator([[1,5],[2,3]]);
+    window.onload = new Generator([[1, 5], [2, 3]]);
 }
 
 /**
@@ -54,7 +56,7 @@ function practice(ctx) {
  * When leaving a page, perform the following action
  * Reset all events from pubsub module to prevent interception from past subscribers
  * */
-function backFunction(ctx,next) {
+function backFunction(ctx, next) {
     Events.resetAll();
     next();
 }
@@ -62,7 +64,7 @@ function backFunction(ctx,next) {
 /**
  * Not found page
  * */
-function notFound(){
+function notFound() {
     window.onload = new NotFound();
 }
 
