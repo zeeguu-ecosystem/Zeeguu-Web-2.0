@@ -79,7 +79,10 @@ Generator.prototype = {
     {
         let _this= this;
         //Callback wait until the bookmarks are loaded
+        $("#exloader").animate({ opacity: 1/2 }, 1000);
+
         this.validator.getValidBookMarks(function(ldata) {
+            $("#exloader").hide();
             _this.data = (ldata);
             _this.set = _this.validator.validSet;
             //Terminate generator if not enough bookmarks
@@ -159,17 +162,21 @@ Generator.prototype = {
                 showCancelButton: true,
                 confirmButtonColor: "#7eb530",
                 confirmButtonText: "Let's do it!",
-                cancelButtonText: finalAction.btnText,
+                cancelButtonText: "To Reading",
                 closeOnConfirm: true
             },
             function(isConfirm){
                 if(isConfirm){
                     ProgressBar.terminate();
-                    _this.restart();
+                    events.off('exerciseCompleted',this.$eventFunc);
+                    ProgressBar.terminate();
+                    events.emit('generatorCompleted');
+                    location.reload();
                     return;
                 }
-                _this.terminateGenerator();
-                finalAction.actionFunc();
+                var currentUrl = window.location;
+                var baseUrl = currentUrl.protocol + "//" + currentUrl.host + "/";
+                window.location=baseUrl;
             });
     },
 

@@ -47,8 +47,24 @@
 </head>
 
 <body class="home-body">
+
+    <div id="exloader" class="loader" style="display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    opacity: 0">
+          <p >
+              Loading exercises. <br/>Please wait... </p>
+        </div>
+
+
   {% include "sideBar.html" %}
-  <div id="main-content"></div>
+  <div id="main-content">
+
+
+  </div>
+
 
   <!-- Add Local main script -->
   <script src="{{ url_for('ex_blueprint.static',filename='js/dist/exercises.js') }}"></script>
@@ -56,6 +72,8 @@
     sideBarLoad('main-content');
 
   </script>
+
+
 </body>
 
 </html>

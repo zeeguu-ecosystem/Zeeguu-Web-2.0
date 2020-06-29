@@ -10,11 +10,7 @@ import Events from './pubsub';
 
 
 /********************** Routes **************************/
-page('/', redirect);
-page('/practice', index);
-page('/practice/get-ex', getEx);
-page('/practice/plan/:practicePlan', practice);
-page('/*', notFound);
+page('*', practice);
 
 /******************* Page Settings **********************/
 page.exit('*', backFunction);
@@ -23,25 +19,6 @@ page.start();
 
 /********************** Handlers ***********************/
 
-function redirect() {
-    page.redirect("/practice");
-    console.log("redirected...");
-}
-
-/**
- * Main starter screen route
- * */
-function index() {
-    window.onload = new Starter();
-}
-
-/**
- * Get-ex route
- * */
-function getEx() {
-    //For now hand codded exercise generator
-    window.onload = new Generator([[1, 5], [2, 3]]);
-}
 
 /**
  * Practice route
@@ -49,7 +26,12 @@ function getEx() {
  * @example http://127.0.0.1:5000/#!/practice/0 , practice plan with index 0
  * */
 function practice(ctx) {
-    window.onload = new Generator(Starter.prototype.exNames[ctx.params.practicePlan].exID);
+    
+    if (ctx.canonicalPath.match("practice/plan/")) {
+        var exerciseType = ctx.canonicalPath.slice(-1);
+        console.log("starting exercise session type " + exerciseType)
+        window.onload = new Generator(Starter.prototype.exNames[exerciseType].exID);
+    }
 }
 
 /**

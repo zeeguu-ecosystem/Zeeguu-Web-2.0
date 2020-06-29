@@ -69,6 +69,7 @@ TextInputExercise.prototype.formatStringForCheck = function (text) {
 TextInputExercise.prototype.successCondition = function(){
 	this.answerWithTyposMarked = this.answer.trim().replace(/\s\s+/g, ' ');
 	var input = this.$input.val().trim().toUpperCase().replace(/\s\s+/g, ' ');
+	input = input.replace(/[\,;.]/g, '');
 	var answer = this.answer.trim().toUpperCase().replace(/\s\s+/g, ' ');
 	
 	// Check exact match
