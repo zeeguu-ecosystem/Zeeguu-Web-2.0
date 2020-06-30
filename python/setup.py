@@ -3,15 +3,14 @@
 
 import setuptools
 
-
 setuptools.setup(
     name="zeeguu_web",
-    version="0.1",
+    version="1.0",
     packages=setuptools.find_packages(),
     include_package_data=True,
     zip_safe=False,
     author="Zeeguu Team",
-    author_email="me@mir.lu",
-    description="Basic Web Presence for Zeeguu",
-    keywords="Zeeguu is an ecosystem which aims at accelerating second language acquisition",
+    author_email="zeeguu.team@gmail.com",
+    description="Web Application for Zeeguu",
+    keywords="Zeeguu aims at accelerating second language acquisition",
 )

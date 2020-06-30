@@ -17,12 +17,10 @@ import Session from './session';
 import {Loader} from './loader';
 import Util from './util';
 import Validator from './validator';
-import TDS from './the_distraction_shield_extension';
 
 
- 
-var Generator = function(set,parentInvocation = "NA"){
-    this.init(set,parentInvocation);
+var Generator = function (set, parentInvocation = "NA") {
+    this.init(set, parentInvocation);
 };
 
 Generator.prototype = {
@@ -31,20 +29,20 @@ Generator.prototype = {
     set: 0,			//matrix for initialaizer
     index: 0,		//current index from set
     startTime: new Date(),
-    session: Session.getSession()  , //Example of session id 34563456 or 11010001
+    session: Session.getSession(), //Example of session id 34563456 or 11010001
     templateURL: 'static/template/exercise/exercise.html',
     parentInvocation: '',
 
     /**
-     *	Saves the common dom in chache
+     *    Saves the common dom in chache
      **/
-    cacheDom: function(){
+    cacheDom: function () {
     },
 
     /**
      * The function caches imports in local scope for later to be referenced as a string
      * */
-    cacheExerciseImports: function(){
+    cacheExerciseImports: function () {
         this.Ex1 = Ex1;
         this.Ex2 = Ex2;
         this.Ex3 = Ex3;
@@ -52,9 +50,9 @@ Generator.prototype = {
     },
 
     /**
-     *	Generator initialaizer
+     *    Generator initialaizer
      **/
-    init: function(set,parentInvocation){
+    init: function (set, parentInvocation) {
         this.set = set;
         var _this = this;
 
@@ -62,36 +60,37 @@ Generator.prototype = {
 
         this.parentInvocation = parentInvocation;
         // "bind" event
-        this.$eventFunc = function(){_this.nextEx()};
-        events.on('exerciseCompleted',this.$eventFunc);
+        this.$eventFunc = function () {
+            _this.nextEx()
+        };
+        events.on('exerciseCompleted', this.$eventFunc);
 
         this.start();
     },
 
-    restart: function(){
+    restart: function () {
         this.start();
     },
 
     /**
-     *	Call to load the data from API
+     *    Call to load the data from API
      **/
-    start: function ()
-    {
-        let _this= this;
+    start: function () {
+        let _this = this;
         //Callback wait until the bookmarks are loaded
-        $("#exloader").animate({ opacity: 1/2 }, 1000);
+        $("#exloader").animate({opacity: 1 / 2}, 1000);
 
-        this.validator.getValidBookMarks(function(ldata) {
+        this.validator.getValidBookMarks(function (ldata) {
             $("#exloader").hide();
             _this.data = (ldata);
             _this.set = _this.validator.validSet;
             //Terminate generator if not enough bookmarks
-            if(_this.set ==null || _this.set <=0) {
+            if (_this.set == null || _this.set <= 0) {
                 _this.terminateGenerator();
                 return;
             }
             //Loads the HTML general exercise template from static
-            $.when(Loader.loadTemplateIntoElem(_this.templateURL,$("#main-content"))).done(function(){
+            $.when(Loader.loadTemplateIntoElem(_this.templateURL, $("#main-content"))).done(function () {
                 // Create the DOM and start the generator
                 ProgressBar.init(0, _this.validator.validSize);
                 _this.cacheDom();
@@ -101,11 +100,10 @@ Generator.prototype = {
         });
     },
 
-    filterArray: function(bookmarksData)
-    {
-        for(var i = 0; i< bookmarksData.length;i++){
+    filterArray: function (bookmarksData) {
+        for (var i = 0; i < bookmarksData.length; i++) {
             var tempIdx = indexOf(bookmarksData[i]);
-            if(tempIdx == -1 || tempIdx == i){
+            if (tempIdx == -1 || tempIdx == i) {
                 continue;
             }
             bookmarksData.splice(i, 1);
@@ -113,51 +111,49 @@ Generator.prototype = {
         return bookmarksData;
     },
     /**
-     *	The main constructor
+     *    The main constructor
      **/
-    _constructor: function (){
+    _constructor: function () {
         this.index = 0;
         this.startTime = new Date();
         this.nextEx();
     },
 
     /**
-     *	Add Ex here
+     *    Add Ex here
      **/
-    nextEx: function(){
-        if(this.index >= this.set.length){
+    nextEx: function () {
+        if (this.index >= this.set.length) {
             this.onExSetComplete();
             return;
         }
         var ex = this.set[this.index][0];
         var size = this.set[this.index][1];
-        var startingIndex = Util.calcSize(this.set,this.index);
+        var startingIndex = Util.calcSize(this.set, this.index);
 
-        if(this.$currentEx) this.$currentEx.terminateExercise();
+        if (this.$currentEx) this.$currentEx.terminateExercise();
         this.$currentEx = null;
         delete this.$currentEx;
         //Local scope reference
-        this.$currentEx = new (this['Ex'+ex])(this.data,startingIndex,size);
+        this.$currentEx = new (this['Ex' + ex])(this.data, startingIndex, size);
         this.index++;
     },
     /**
-     *	Request the submit API
+     *    Request the submit API
      **/
-    submitResults: function(){
+    submitResults: function () {
         //TODO submit user feedback if any
     },
 
     /**
-     *	When the ex are done perform an action
+     *    When the ex are done perform an action
      **/
-    onExSetComplete: function (){
+    onExSetComplete: function () {
         var _this = this;
-        var redirect = TDS.distractionShieldOriginalDestination();
-        var finalAction = this.finalActions(redirect,this.parentInvocation);
-		_this.submitResults();
+        _this.submitResults();
         swal({
                 title: "You rock!",
-                text: "That took less than "+ Util.calcTimeInMinutes(_this.startTime) + ". practice more?",
+                text: "That took less than " + Util.calcTimeInMinutes(_this.startTime) + ". practice more?",
                 type: "success",
                 showCancelButton: true,
                 confirmButtonColor: "#7eb530",
@@ -165,10 +161,10 @@ Generator.prototype = {
                 cancelButtonText: "To Reading",
                 closeOnConfirm: true
             },
-            function(isConfirm){
-                if(isConfirm){
+            function (isConfirm) {
+                if (isConfirm) {
                     ProgressBar.terminate();
-                    events.off('exerciseCompleted',this.$eventFunc);
+                    events.off('exerciseCompleted', this.$eventFunc);
                     ProgressBar.terminate();
                     events.emit('generatorCompleted');
                     location.reload();
@@ -176,7 +172,7 @@ Generator.prototype = {
                 }
                 var currentUrl = window.location;
                 var baseUrl = currentUrl.protocol + "//" + currentUrl.host + "/";
-                window.location=baseUrl;
+                window.location = baseUrl;
             });
     },
 
@@ -186,32 +182,36 @@ Generator.prototype = {
      * @param {String} parentInvocation, who to emit when the action is done
      * @return {Object}, text of the action and the action function
      * */
-    finalActions: function (redirect,parentInvocation) {
+    finalActions: function (redirect, parentInvocation) {
         let secondaryBtn = 'Go home!';
-        let actionFunction = ()=> {_this.invokeParent();};
+        let actionFunction = () => {
+            _this.invokeParent();
+        };
 
         //If the redirect url is present
-        if(redirect!=null){
+        if (redirect != null) {
             secondaryBtn = "Take me away!";
-            actionFunction = ()=> { window.location = redirect;};
+            actionFunction = () => {
+                window.location = redirect;
+            };
         }
         //If there is no home available create home
-        else if(parentInvocation === "NA"){
-            actionFunction = ()=> {
+        else if (parentInvocation === "NA") {
+            actionFunction = () => {
                 let redirect = window.location.protocol + "//" + window.location.hostname;
                 //Local debuging, wont be part of final code
                 window.location.href = (redirect === "http://127.0.0.1") ? redirect + ":5000" : redirect;
             };
         }
-        return {btnText:secondaryBtn, actionFunc:actionFunction};
+        return {btnText: secondaryBtn, actionFunc: actionFunction};
     },
 
-    terminateGenerator: function(){
-        events.off('exerciseCompleted',this.$eventFunc);
+    terminateGenerator: function () {
+        events.off('exerciseCompleted', this.$eventFunc);
         ProgressBar.terminate();
         events.emit('generatorCompleted');
     },
-    invokeParent: function(){
+    invokeParent: function () {
         events.emit(this.parentInvocation);
     },
 };
