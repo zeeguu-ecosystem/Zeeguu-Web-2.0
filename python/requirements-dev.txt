@@ -1,6 +1,0 @@
-cssmin==0.2.0
-Flask==0.12.4
-Flask-Assets
-requests
-setuptools==18.5
-WTForms==2.2.1
