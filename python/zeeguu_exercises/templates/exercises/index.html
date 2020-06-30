@@ -2,76 +2,82 @@
 <html>
 
 <head>
-  <!-- Used to separate the concern of drop down menu-->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- Used to separate the concern of drop down menu-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-  <!-- Add Page Title -->
-  <title>Zeeguu Practice</title>
-  <meta name="viewport" content="width=device-width, height=device-height" />
+    <!-- Add Page Title -->
+    <title>Zeeguu Practice</title>
+    <meta name="viewport" content="width=device-width, height=device-height"/>
 
-  <!--FONT LINK-->
-  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet" />
+    <!--FONT LINK-->
+    <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet"/>
 
-  <!--FRONT PAGE CSS LINK-->
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/front-page.css') }}" type="text/css" />
+    <!--FRONT PAGE CSS LINK-->
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/front-page.css') }}"
+          type="text/css"/>
 
-  <!-- CSS LINKS-->
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/empty_page.css') }}" type="text/css" />
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/custom.css') }}" type="text/css" />
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/success.css') }}" type="text/css" />
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/loader.css') }}" type="text/css" />
+    <!-- CSS LINKS-->
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/empty_page.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/custom.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/success.css') }}" type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/loader.css') }}" type="text/css"/>
 
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/sweetalert.css') }}" type="text/css" />
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/responsive.css') }}" type="text/css" />
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/sweetalert.css') }}"
+          type="text/css"/>
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/responsive.css') }}"
+          type="text/css"/>
 
-  <!-- New responsive css-->
-  <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/responsive-exercise.css') }}"
-    type="text/css" />
+    <!-- New responsive css-->
+    <link rel="stylesheet" href="{{ url_for('ex_blueprint.static',filename='styles/responsive-exercise.css') }}"
+          type="text/css"/>
 
-  <!-- Script -->
-  <script type="text/javascript" src="/static/js/MobileHelpers.js"></script>
+    <!-- Script -->
+    <script type="text/javascript" src="/static/js/MobileHelpers.js"></script>
 
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
-    gtag("js", new Date());
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-89557275-2"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
 
-    gtag("config", "UA-89557275-2");
-  </script>
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
+        gtag("js", new Date());
+
+        gtag("config", "UA-89557275-2");
+    </script>
 
 </head>
 
 <body class="home-body">
 
-    <div id="exloader" class="loader" style="display: flex;
+<div id="exloader" class="loader" style="display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
     height: 100%;
     opacity: 0">
-          <p >
-              Loading exercises. <br/>Please wait... </p>
-        </div>
+    <p>
+        Loading exercises. <br/>Please wait... </p>
+</div>
 
 
-  {% include "sideBar.html" %}
-  <div id="main-content">
+{% include "sideBar.html" %}
+<div id="main-content">
 
 
-  </div>
+</div>
 
 
-  <!-- Add Local main script -->
-  <script src="{{ url_for('ex_blueprint.static',filename='js/dist/exercises.js') }}"></script>
-  <script>
+<!-- Add Local main script -->
+<script src="{{ url_for('ex_blueprint.static',filename='js/dist/exercises.js') }}"></script>
+<script>
     sideBarLoad('main-content');
 
-  </script>
+</script>
 
 
 </body>
