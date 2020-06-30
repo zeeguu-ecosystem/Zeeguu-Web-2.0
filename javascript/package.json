@@ -9,7 +9,10 @@
   "scripts": {
     "reader_watch": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config reader.config.js --watch",
     "exercises_watch": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config exercises.config.js --watch",
-    "dev": "concurrently --kill-others \"npm run reader_watch\" \"npm run exercises_watch\""
+    "reader": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config reader.config.js",
+    "exercises": "webpack --env.ZEEGUU_API=$ZEEGUU_API --config exercises.config.js",
+    "watch": "concurrently --kill-others \"npm run reader_watch\" \"npm run exercises_watch\"",
+    "build": "concurrently \"npm run reader\" \"npm run exercises\""
   },
   "keywords": [],
   "author": "",
