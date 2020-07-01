@@ -53,6 +53,7 @@ Generator.prototype = {
      *    Generator initialaizer
      **/
     init: function (set, parentInvocation) {
+        // console.log("initializing generator...");
         this.set = set;
         var _this = this;
 
@@ -114,6 +115,7 @@ Generator.prototype = {
      *    The main constructor
      **/
     _constructor: function () {
+        // console.log("in _constructor");
         this.index = 0;
         this.startTime = new Date();
         this.nextEx();
@@ -123,6 +125,7 @@ Generator.prototype = {
      *    Add Ex here
      **/
     nextEx: function () {
+        // console.log("next ex");
         if (this.index >= this.set.length) {
             this.onExSetComplete();
             return;

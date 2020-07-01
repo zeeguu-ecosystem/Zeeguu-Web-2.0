@@ -13,6 +13,8 @@ function Ex1(data,index,size){
 	
 	/** @Override */
 	this.bindUIActions = function(){
+		// console.log("in bind actions...");
+
 		//Bind UI action of Hint/Show solution to the function		
 		this.$showSolution.on("click", this.handleHint.bind(this));
 		
@@ -48,7 +50,9 @@ function Ex1(data,index,size){
 	};
 	
 	this.updateInput = function() {
+
 		var t = Util.getSelectedText();
+		// console.log("clicked on" + t);
 		this.$input.val(this.$input.val().trim() + " " + t);
 	};
 	

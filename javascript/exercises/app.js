@@ -26,10 +26,10 @@ page.start();
  * @example http://127.0.0.1:5000/#!/practice/0 , practice plan with index 0
  * */
 function practice(ctx) {
-    
-    if (ctx.canonicalPath.match("practice/plan/")) {
+    // console.log(ctx);
+    if (ctx.canonicalPath.startsWith("/practice/#!/practice/plan/")) {
         var exerciseType = ctx.canonicalPath.slice(-1);
-        console.log("starting exercise session type " + exerciseType)
+        // console.log("starting exercise session type " + exerciseType)
         window.onload = new Generator(Starter.prototype.exNames[exerciseType].exID);
     }
 }
