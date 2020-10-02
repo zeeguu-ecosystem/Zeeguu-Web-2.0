@@ -13,5 +13,5 @@ def set_session_data(details, sessionID, response):
 
     flask.session.permanent = True
 
-    response.set_cookie(KEY__STAND_ALONE_SESSION_ID, str(sessionID), max_age=31536000, samesite='None', secure=False)
-    response.set_cookie(KEY__NATIVE_LANG, details["native_language"], max_age=31536000, samesite='None', secure=False)
+    response.set_cookie(KEY__STAND_ALONE_SESSION_ID, str(sessionID), max_age=31536000, samesite='None', secure=True)
+    response.set_cookie(KEY__NATIVE_LANG, details["native_language"], max_age=31536000, samesite='None', secure=True)
