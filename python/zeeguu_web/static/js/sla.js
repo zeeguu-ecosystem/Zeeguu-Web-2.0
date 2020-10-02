@@ -8,22 +8,7 @@ function showStar(starred) {
 
 
 $(function () {
-    if (typeof chrome !== "undefined" && !chrome.app.isInstalled) {
-        $("#install-extension").click(function () {
-            chrome.webstore.install();
-        });
-    } else {
-        $("#install-extension").prop("disabled", true).addClass("disabled");
-    }
 
-    $('input').focus(function () {
-        $(this).popover('show');
-    });
-
-
-    $('input').blur(function () {
-        $(this).popover('hide');
-    });
 
     $("#login").validate({
         rules: {
