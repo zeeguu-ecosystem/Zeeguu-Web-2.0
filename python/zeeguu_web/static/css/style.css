@@ -175,6 +175,8 @@ body {
   border-radius: 1em;
   flex:1;
   padding-bottom: 2em;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .htContainer h3 {
