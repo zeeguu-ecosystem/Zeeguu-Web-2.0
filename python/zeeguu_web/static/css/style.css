@@ -173,7 +173,8 @@ body {
   margin: 1em;
   text-align: center;
   border-radius: 1em;
-  flex:1; 
+  flex:1;
+  padding-bottom: 2em;
 }
 
 .htContainer h3 {
@@ -183,11 +184,12 @@ body {
 }
 
 .htContainer p {
+  text-align: left;
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5em;
-  padding-left: 1.2em;
-  padding-right: 1.2em;
+  padding-left: 2.2em;
+  padding-right: 2.2em;
 }
 
 .iconHowTo {
@@ -198,7 +200,7 @@ body {
 }
 
 .htContainer:hover .hithere {
-  animation: hithere 1s ease infinite;
+  animation: hithere 800ms ease 000ms;
 }
 @keyframes hithere {
   30% {
@@ -252,8 +254,8 @@ body {
 
 .newsItem {
   display: flex;
-  margin-left: 2em;
   margin-bottom: 0.5em;
+  margin-left: 200px;
 }
 
 .newsItem p {
