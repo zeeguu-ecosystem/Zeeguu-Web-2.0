@@ -28,7 +28,7 @@
 
   .howTo h1 {
     padding-top: 1.5em;
-    font-size: 1em;
+    font-size: 1.4em;
     font-weight: 300;
     padding-bottom: 0.5em;
     padding: 1em;
@@ -65,7 +65,8 @@
 
   .articleContain {
     display: block;
-    text-align: center;
+    text-align: left;
+    padding: 1em;
   }
 
   .article {

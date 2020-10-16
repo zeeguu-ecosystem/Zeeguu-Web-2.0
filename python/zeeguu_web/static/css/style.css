@@ -54,6 +54,8 @@ body {
   font-family: Montserrat;
   margin-top: -0.7em;
   text-align: right;
+  flex-shrink: 0;
+  flex-basis: 5em;
 }
 
 .logoContainer {
@@ -226,6 +228,7 @@ body {
 .articleContain {
   display: flex;
   justify-content: space-around;
+  padding: 1em;
 }
 
 .articleContain h1 {
@@ -269,7 +272,7 @@ body {
 
 .newsItem p {
   padding-left: 1em;
-  font-size: 0.9em;
+  font-size: 1em;
 }
 
 .newsItem a {
