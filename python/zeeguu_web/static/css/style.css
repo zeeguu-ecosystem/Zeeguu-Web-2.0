@@ -48,12 +48,12 @@ body {
 }
 
 .dateSpan {
-  color: white;
+  /*color: white;*/
   font-size: 0.7em;
   margin-right: 0.5em;
   font-family: Montserrat;
   margin-top: -0.7em;
-  text-align: center;
+  text-align: right;
 }
 
 .logoContainer {
@@ -190,15 +190,15 @@ body {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5em;
-  padding-left: 2.2em;
-  padding-right: 2.2em;
+  padding-left: 1.8em;
+  padding-right: 1.8em;
 }
 
 .iconHowTo {
   padding: oem;
   height: auto;
-  width: 10em;
-  margin: 2em;
+  width: 8em;
+  margin: 1.5em;
 }
 
 .htContainer:hover .hithere {
@@ -254,10 +254,17 @@ body {
   color: white;
 }
 
+.news-year {
+  background-color: white;
+
+}
+
 .newsItem {
   display: flex;
+  background-color: white;
   margin-bottom: 0.5em;
   margin-left: 200px;
+  margin-right: 0.5em;
 }
 
 .newsItem p {

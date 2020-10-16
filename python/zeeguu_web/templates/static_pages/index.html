@@ -36,8 +36,9 @@ body %}
         <img class="logoElephant swing" src="../static/img/zeeguuLogo.svg"/>
         <h1>Zeeguu</h1>
         <h2>
-            A research project designed to speed & fun up vocabulary learning in a new
-            language
+            A research project aiming to
+            personalize reading and vocabulary
+            practice in a foreign language
         </h2>
 
         {% if not g.user %}
@@ -51,31 +52,39 @@ body %}
     <!--THREE STEPS PRESENTATION-->
 
     <div class="howTo">
-        <h1>Our approach is designed around three fundamental principles</h1>
+        <h1 style="font-size: 64px">Towards Your <br/> Personalized Textbook </h1>
         <div class="containers">
             <div class="htContainer">
-                <h1>Discover texts you like and that are not too hard</h1>
-{#                <h3>that are not too difficult for you</h3>#}
+                <h1>Find interesting texts at the right difficulty</h1>
+                {#                <h3>that are not too difficult for you</h3>#}
 
                 <div class="hithere">
                     <img class="iconHowTo" src="../static/img/findArticle.svg"/>
                 </div>
 
                 <p>
-{#                    Unlike most traditional learning materials based on pre-defined,#}
-{#                    standardized and let's admit it: boring texts, #}
-                    We think that you will be more motivated if you can read only the stuff that you like in the language that you are learning.
-                    Blogs, articles and news will be recommended to you matching your favorite topics as soon as they appear on the net.
-                <br/><br/>
-                    In all these contexts and on any chosen device,
-                    you will have information about text difficulty,
-                    such that you don't get demoralized by reading textst
-                    that are too difficult.
+
+                    Our system continuously searches the Internet for
+                    new texts based on your interests.
+                    It estimates their difficulty to present you with those
+                    in the <i>zone of proximal development</i>:
+                    not too hard to make you give up,
+                    but not too easy to bore you.
+
+                </p>
+
+                <p>
+
+                    Unlike the generic texts destined for the average learner
+                    that you can find in textbooks, personally relevant texts
+                    will motivate you to study more.
+                    {#                    This in turn  will result in you learning more.#}
+
                 </p>
             </div>
 
             <div class="htContainer">
-                <h1>Read easily with one-click-translations everywhere</h1>
+                <h1>Read with seamless support for translations </h1>
 
                 <div class="hithere">
                     <img class="iconHowTo" src="../static/img/click.svg"/>
@@ -83,44 +92,55 @@ body %}
 
                 <p>
 
-                    The texts that you read should not be too easy.
-                    Instead they should be "in the zone of proximal development":
-                    a bit challenging, so you improve.
-                    Thus, when you need to translate words, you should
-                    obtain translations at the touch of a fingertip.
+                    Studies show that you learn best when the texts that you read
+                    are a little challenging.
 
-                    <br/><br/>
+                    This means that in the ideal text you will still encounter words that
+                    you don't understand.
+                </p>
 
-                    Words that you have once translated, will go into your own,
-                    private dictionary and will be available to you always
-                    from all your devices.
-{#                    The information about the context where you#}
-{#                    encountered a given new word will also be synchronized across#}
-{#                    applications and devices.#}
-{#                    There is no doubt we understand and remember#}
-{#                    so much better words in context.#}
+                <p>
+                    By using machine translation our system helps you obtain
+                    translations in any text with a simple click (or tap
+                    on touch-enabled devices).
+                </p>
+
+                <p>
+                    The system also provides word pronunciation support.
                 </p>
             </div>
 
             <div class="htContainer">
-                <h1>Practice vocabulary smartly in a personalzed way</h1>
+                <h1>Optimally practice your personalized vocabulary</h1>
 
                 <div class="hithere">
                     <img class="iconHowTo" src="../static/img/correct.svg"/>
                 </div>
 
+                {#                <p>#}
+                {#                    Words that you once translated, go into your own#}
+                {#                    <b>private word list</b> and are available#}
+                {#                    from all your devices.#}
+                {##}
+                {#                </p>#}
+
                 <p>
-                    Based on the texts you read, the words you translate, and lists of word
-                    frequencies, Zeeguu will use machine learning to build a model of your
-                    current vocabulary in the target language.
+                    Based on your past interactions with texts
+                    the system uses machine learning
+                    a model of your vocabulary knowledge.
 
-                    <br/>
-                    <br/>
-
-                    Applying this model and using
-                    spaced repetition, you will  practice and retain the new words, ranked according to
-                    their importance.
+                    It then generates a variety of vocabulary exercises,
+                    some of which, even use the original context of the word
+                    because contextual learning works better.
                 </p>
+
+                <p>
+                    Spaced repetition algorithms optimize your practice and
+                    frequent words are prioritized.
+
+                    {#                    It also prioritizes words by their importance in the learned language.#}
+                </p>
+
             </div>
         </div>
     </div>
@@ -140,55 +160,90 @@ body %}
     <div class="newsContainer">
         <h1>News</h1>
 
+
         <div class="newsItem">
-            <span class="dateSpan new">(August 2020)</span>
+            <span class="dateSpan new"> Sept '20</span>
             <p>
-                Mircea will give a workshop about Zeeguu at
+                👨‍🎓👩‍🎓 Two more high-schools in the Netherlands starts using Zeeguu in their French classroom
+            </p>
+        </div>
+
+
+        <div class="newsItem">
+
+            <span class="dateSpan new">Aug '20</span>
+            <p>
+                Workshop about Zeeguu at
                 <a href="https://eurocall2020.ku.dk/" target="_blank"
                 >EuroCALL 2020</a
-                >
-                which will be held online.
+                >.
             </p>
+
+        </div>
+
+
+        <div class="newsItem">
+
+            <span class="dateSpan new">Jul '20</span>
+            <p>
+                The users of Zeeguu reach 40'000 distinct words practiced within the exercises
+            </p>
+
         </div>
 
         <div class="newsItem">
-            <span class="dateSpan new">(August 2019)</span>
+            <span class="dateSpan new">Aug '19</span>
             <p>
-                Mircea will talk about Zeeguu at
+                Mircea talks about Zeeguu at
                 <a href="https://sites.uclouvain.be/eurocall2019/" target="_blank"
-                >EuroCALL</a
+                >EuroCALL 2019</a
                 >
-                and <a href="https://easeai.github.io" target="_blank">EASEAI</a>
+{#                and <a href="https://easeai.github.io" target="_blank">EASEAI 2019</a>#}
             </p>
+
+        </div>
+
+{#        <div class="newsItem">#}
+{#            <span class="dateSpan new">Jul '19</span>#}
+{#            <p>#}
+{#                We have moved to zeeguu.org#}
+{#            </p>#}
+{#        </div>#}
+
+{#        <div class="newsItem">#}
+{#            <span class="dateSpan new">Apr '18</span>#}
+{#            <p>#}
+{#                Mircea presents in Montreal a paper about Zeeguu#}
+{#                at <a href="https://chi2018.acm.org/">CHI'18</a>!#}
+{#            </p>#}
+{#        </div>#}
+
+        <div class="newsItem">
+            <span class="dateSpan new">Jan '18</span>
+            <p>Paper about Zeeguu accepted at <a href="https://chi2018.acm.org/">CHI 2018</a> -- the top international conference on HCI 🎉 </p>
         </div>
 
         <div class="newsItem">
-            <span class="dateSpan new">(April 2019)</span>
-            <p>
-                We have moved to
-                <a href="https://zeeguu.org" target="_blank">zeeguu.org</a>
-            </p>
+            <span class="dateSpan new">May '17</span>
+            <p>👩‍🎓 Students at the Gomarus College in Netherlands start using Zeeguu in their French classroom </p>
         </div>
 
         <div class="newsItem">
-            <span class="dateSpan new">(April 2018)</span>
-            <p>
-                Mircea presents
-                <a
-                        href="https://www.researchgate.net/publication/322489283_As_We_May_Study_Towards_the_Web_as_a_Personalized_Language_Textbook"
-                        target="_blank"
-                >
-                    a paper about Zeeguu</a
-                >
-                at CHI'18 in Montreal!
-            </p>
+            <span class="dateSpan new">Dec '16</span>
+            <p>Zeeguu is online and ready to welcome beta-testers </p>
         </div>
 
-        <div class="newsItem">
-            <span class="dateSpan new">(January 2018)</span>
-            <p>Paper about Zeeguu accepted to CHI 2018!</p>
-        </div>
+
     </div>
+
+
+
+    </div>
+
+
+
+
+
 
     <!--TEAM-->
 
@@ -197,7 +252,9 @@ body %}
 
         <small>
             The project has benefited from the contributions and advice from many
-            people. Some of them are listed here:
+            people.
+            <br/>
+            Some of them are listed here:
         </small>
         <div class="teamMembers">
             <div>
