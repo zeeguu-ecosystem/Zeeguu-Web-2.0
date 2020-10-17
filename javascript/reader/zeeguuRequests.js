@@ -98,6 +98,9 @@ export const GET_USER_ARTICLE_INFO = '/user_article';
 /** Updates the user article info **/
 export const POST_USER_ARTICLE = '/user_article';
 
+export const BOOKMARKS_FOR_ARTICLE = "/bookmarks_for_article";
+export const DELETE_BOOKMARK = "/delete_bookmark"
+
 /**
  * Abstracts request to the Zeeguu API.
  * @see https://www.zeeguu.unibe.ch
