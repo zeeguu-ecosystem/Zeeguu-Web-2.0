@@ -177,8 +177,8 @@ body {
   border-radius: 1em;
   flex:1;
   padding-bottom: 2em;
-  padding-left: 1em;
-  padding-right: 1em;
+  padding-left: 0.9em;
+  padding-right: 0.7em;
 }
 
 .htContainer h3 {
@@ -192,8 +192,8 @@ body {
   font-size: 1em;
   font-weight: 400;
   line-height: 1.5em;
-  padding-left: 1.8em;
-  padding-right: 1.8em;
+  padding-left: 1.4em;
+  padding-right: 1.4em;
 }
 
 .iconHowTo {
