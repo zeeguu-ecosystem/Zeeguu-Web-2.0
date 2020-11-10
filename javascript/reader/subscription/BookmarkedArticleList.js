@@ -30,6 +30,11 @@ export default class BookmarkedArticleList {
      * @param {Object[]} articleLinks - List containing articles.
      */
     _renderArticleLinks(articleLinks) {
+
+        $(".loader").fadeOut("slow");
+        $("#noBookmarksYet").fadeIn("slow");
+
+
         if (articleLinks.length === 0) {
             $(HTML_ID_EMPTY_STARRED_ARTICLE_LIST).show();
             return;
