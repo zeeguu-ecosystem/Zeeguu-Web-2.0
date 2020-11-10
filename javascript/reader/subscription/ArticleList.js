@@ -14,6 +14,8 @@ import { SEARCH_ENDPOINT } from "../zeeguuRequests";
 import { FILTER_RENDER } from "../zeeguuRequests";
 import { SEARCH_RENDER } from "../zeeguuRequests";
 
+import {select_tab} from './headerMenu';
+
 const KEY_MAP_FEED_ARTICLE = "feed_article_map";
 const EVENT_ARTICLES_REQUESTED = "ARTICLES REQUESTED FROM ZEEGUU";
 const HTML_ID_ARTICLE_LINK_LIST = "#articleLinkList";
@@ -73,7 +75,9 @@ export default class ArticleList {
       callback
     );
     UserActivityLogger.log(EVENT_ARTICLES_REQUESTED, this.articlesOnPage);
-    // }
+
+    select_tab("#inbox_tab");
+
   }
 
   search(search) {

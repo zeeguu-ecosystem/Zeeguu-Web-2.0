@@ -6,6 +6,7 @@ import { difficultyToColorMapping } from "./DifficultyColors";
 import UserActivityLogger from "../UserActivityLogger";
 import ZeeguuRequests from "../zeeguuRequests";
 import { GET_COHORT_ARTICLES } from "../zeeguuRequests";
+import {select_tab} from './headerMenu';
 
 const HTML_ID_EMPTY_COHORT_ARTICLE_LIST = "#emptyCohortArticleListImage";
 const HTML_ID_COHORT_ARTICLE_LIST = "#cohortArticleList";
@@ -22,6 +23,7 @@ export default class CohortArticleList {
    */
   load() {
     ZeeguuRequests.get(GET_COHORT_ARTICLES, {}, this._renderArticleLinks);
+    select_tab("#cohort_tab")
   }
 
   /**
@@ -36,6 +38,11 @@ export default class CohortArticleList {
   }
 
   _renderArticleLinks(articleLinks) {
+
+    console.log("got cohort articles...");
+    console.log(articleLinks);
+
+
     if (articleLinks.length === 0) {
       setTimeout(this.renderNoArticlesICON, 1000);
       return;

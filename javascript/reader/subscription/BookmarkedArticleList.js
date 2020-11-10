@@ -1,27 +1,26 @@
 import $ from 'jquery';
 import Mustache from 'mustache';
-import config from '../config';
-import UserActivityLogger from '../UserActivityLogger';
+
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_STARRED_ARTICLES } from '../zeeguuRequests';
-import { POST_UNSTAR_ARTICLE } from '../zeeguuRequests';
+import {GET_STARRED_ARTICLES} from '../zeeguuRequests';
+import {select_tab} from './headerMenu';
 
 
 const HTML_ID_EMPTY_STARRED_ARTICLE_LIST = '#emptyStarredArticleListImage';
 const HTML_ID_STARRED_ARTICLE_LIST = '#starredArticleList';
 const HTML_ID_STARRED_ARTICLELINK_TEMPLATE = '#starred-articleLink-template';
-const HTML_CLASS_CLEAR = '.clear';
-const USER_EVENT_CLICKED_ARTICLE = 'OPEN STARRED ARTICLE';
+
 
 /**
  * Retrieves and renders a list of starred articles.
  */
-export default class StarredArticleList {
+export default class BookmarkedArticleList {
     /**
      * Make an asynchronous call using {@link ZeeguuRequests} to retrieve the starred articles.
      */
     load() {
         ZeeguuRequests.get(GET_STARRED_ARTICLES, {}, this._renderArticleLinks);
+        select_tab("#starred_tab")
     }
 
     /**
@@ -45,7 +44,7 @@ export default class StarredArticleList {
             let topicsListDict = [];
             for (let i = 0; i < topicsList.length; i++) {
                 if (topicsList[i] != "") {
-                    topicsListDict.push({ "topic": topicsList[i] });
+                    topicsListDict.push({"topic": topicsList[i]});
                 }
             }
 
@@ -57,8 +56,11 @@ export default class StarredArticleList {
             if (articleLink.icon_name) {
                 articleIconURL = "/read/static/images/news-icons/" + articleLink.icon_name;
             } else {
-                let authorsInitial = articleLink.authors[0].toLowerCase();
-                articleIconURL = "https://img.icons8.com/dusk/2x/" + authorsInitial + ".png";
+                let authors = articleLink.authors
+                if (authors) {
+                    let authorsInitial = articleLink.authors[0].toLowerCase();
+                    articleIconURL = "https://img.icons8.com/dusk/2x/" + authorsInitial + ".png";
+                }
             }
 
 
@@ -84,14 +86,5 @@ export default class StarredArticleList {
             $(HTML_ID_STARRED_ARTICLE_LIST).append(element);
         }
 
-        $(HTML_CLASS_CLEAR).on('click', function () {
-            ZeeguuRequests.post(POST_UNSTAR_ARTICLE, { url: this.dataset.href });
-            $(this).parent().parent().fadeOut(200, function () {
-                let remaining = ($(this).siblings(config.HTML_CLASS_ARTICLELINK_ENTRY)).length;
-                if (remaining === 0)
-                    $(HTML_ID_EMPTY_STARRED_ARTICLE_LIST).show();
-                $(this).remove();
-            });
-        });
     }
 }
