@@ -34,6 +34,7 @@ export default class SourceSubscriptionList {
      * Initialise an empty {@link Map} of sources.
      */
     constructor() {
+        console.log("source subscription list constructor...");
         this.sourceList = new Map();
     }
 
@@ -42,6 +43,7 @@ export default class SourceSubscriptionList {
      *  Uses {@link ZeeguuRequests}.
      */
     load() {
+        console.log("in load...");
         ZeeguuRequests.get(GET_FEEDS_BEING_FOLLOWED, {}, this._loadSubscriptions.bind(this));
     };
 
@@ -68,7 +70,11 @@ export default class SourceSubscriptionList {
      * @param {Object[]} data - List containing the sources the user is subscribed to.
      */
     _loadSubscriptions(data) {
+        console.log("loading subscription...");
+        console.log(data);
+
         for (let i = 0; i < data.length; i++) {
+            console.log(data[i]);
             this._addSubscription(data[i]);
         }
 

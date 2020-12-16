@@ -1,6 +1,6 @@
 /* Fixed sidenav, full height */
 nav {
-  font-size:14px; 
+  font-size:14px;
 }
 .sidenav {
   height: 100%;
@@ -37,7 +37,7 @@ nav {
     width: 100%;
     text-align: left;
     font-family: Montserrat;
-    
+
 }
 .generalNavLinks{
   position: absolute;

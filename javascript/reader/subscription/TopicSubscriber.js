@@ -27,6 +27,8 @@ export default class TopicSubscriber {
    * @param searchSubscriptionList
    */
   constructor(topicSubscriptionList, searchSubscriptionList) {
+    console.log("topic subscriber...");
+
     this.topicSubscriptionList = topicSubscriptionList;
     this.searchSubscriptionList = searchSubscriptionList;
     self = this;

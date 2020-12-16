@@ -1,5 +1,4 @@
 import $ from 'jquery'
-import Mustache from 'mustache';
 import config from '../config';
 import Notifier from '../Notifier';
 import 'loggly-jslogger';
@@ -8,14 +7,11 @@ import ZeeguuRequests from '../zeeguuRequests';
 import { GET_SUBSCRIBED_TOPICS } from '../zeeguuRequests';
 import { SUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
 import { UNSUBSCRIBE_TOPIC_ENDPOINT } from '../zeeguuRequests';
-import ArticleList from "./ArticleList";
 import { reload_articles_on_drawer_close } from './main.js';
 
 
 const HTML_ID_SUBSCRIPTION_LIST = '#topicsList';
 const HTML_ID_NO_TOPIC_SELECTED = '#any_topic';
-const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-topic';
-const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
 const USER_EVENT_FOLLOWED_FEED = 'FOLLOW FEED';
 const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW FEED';
 
@@ -31,12 +27,11 @@ logger.push({
  * Shows a list of all subscribed topics, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class TopicSubscriptionList {
+export default class InterestSubscriptionList {
     /**
      * Initialise an empty {@link Map} of topics.
      */
     constructor() {
-        console.log("topic subscription list....");
         this.topicList = new Map();
     }
 
@@ -84,17 +79,6 @@ export default class TopicSubscriptionList {
     _addSubscription(topic) {
         if (this.topicList.has(topic.id))
             return;
-        //let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
-        //let subscription = $(Mustache.render(template, topic));
-        //let removeButton = $(subscription.find(HTML_CLASS_REMOVE_BUTTON));
-        //let _unfollow = this._unfollow.bind(this);
-        //removeButton.click(function (topic) {
-        //    return function () {
-        //        _unfollow(topic);
-        //    };
-        //}(topic));
-        //$(HTML_ID_SUBSCRIPTION_LIST).append(subscription);
-
         this.topicList.set(topic.id, topic);
         this.show_no_topic_message_if_necessary();
     }
@@ -190,5 +174,6 @@ export default class TopicSubscriptionList {
      * Not doing anything anymore because we're not reloading anymore
      */
     _loading() {
+
     }
 };

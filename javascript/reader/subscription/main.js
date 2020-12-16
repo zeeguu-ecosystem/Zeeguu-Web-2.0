@@ -5,6 +5,14 @@ import BookmarkedArticleList from "./BookmarkedArticleList";
 import SourceSubscriptionList from "./SourceSubscriptionList.js";
 import CohortArticleList from "./CohortArticleList";
 import config from "../config";
+import InterestSubscriber from "./InterestSubscriber.js";
+import InterestSubscriptionList from "./InterestSubscriptionList.js";
+import CustomInterestSubscriptionList from "./CustomInterestSubscriptionList";
+
+import NonInterestSubscriber from "./NonInterestSubscriber.js";
+import NonInterestSubscriptionList from "./NonInterestSubscriptionList.js";
+import CustomNonInterestSubscriptionList from "./CustomNonInterestSubscriptionList";
+
 
 const HTML_ID_SEARCH_NOTIFCATION_TEMPLATE = "#search-notification-template";
 const HTML_ID_SEARCH_NOTIFICATION = ".searchNotification";
@@ -16,12 +24,25 @@ let sourceSubscriptionList = new SourceSubscriptionList();
 let articleList = new ArticleList(sourceSubscriptionList);
 let starredArticleList = new BookmarkedArticleList();
 let cohortArticleList = new CohortArticleList();
+let customInterestSubscriptionList = new CustomInterestSubscriptionList();
+let interestSubscriptionList = new InterestSubscriptionList();
+let interestSubscriber = new InterestSubscriber(
+  interestSubscriptionList,
+  customInterestSubscriptionList
+);
+
+let nonInterestSubscriptionList = new NonInterestSubscriptionList();
+let customNonInterestSubscriptionList = new CustomNonInterestSubscriptionList();
+let nonInterestSubscriber = new NonInterestSubscriber(
+  nonInterestSubscriptionList,
+  customNonInterestSubscriptionList
+);
 
 
 document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
 
-    console.log(window.location.href);
 
+    console.log(window.location.href);
 
     if (window.location.href.endsWith("/bookmarks")) {
         console.log("BOOKMARKS!");
@@ -33,7 +54,7 @@ document.addEventListener(config.EVENT_SUBSCRIPTION, function () {
         cohortArticleList.load();
 
     } else {
-        console.log("READ!");
+        console.log("READ!!!!");
         articleList.clear();
         articleList.load();
         $(HTML_ID_SEARCH_NOTIFICATION).empty();
@@ -87,11 +108,37 @@ function activate_last_used_tab_if_available() {
  * bind all necessary listeners. */
 $(document).ready(function () {
 
+  interestSubscriptionList.load();
+  interestSubscriber.load();
+  customInterestSubscriptionList.load();
+  nonInterestSubscriptionList.load();
+  nonInterestSubscriber.load();
+  customNonInterestSubscriptionList.load();
+
+
 
     prepare_tab_interaction("cohort");
     prepare_tab_interaction("inbox");
     prepare_tab_interaction("starred");
     activate_last_used_tab_if_available();
+
+    let showAddTopicDialogButton = document.querySelector(
+        ".show-topic-subscriber"
+    );
+
+
+    $(showAddTopicDialogButton).click(function () {
+        interestSubscriber.open();
+    });
+
+  let showAddFilterDialogButton = document.querySelector(
+    ".show-filter-subscriber"
+  );
+  
+  $(showAddFilterDialogButton).click(function () {
+    nonInterestSubscriber.open();
+  });
+
 
 
     // reload articles
@@ -110,6 +157,7 @@ $(document).ready(function () {
             $("#emptyArticleListImage").hide();
         }
     });
+
 
     var countWords = 0;
     $(".wordsSorting").click(function () {
@@ -150,6 +198,9 @@ $(document).ready(function () {
             countLevel = 0;
         }
     });
+
+    sourceSubscriptionList.load();
+
 });
 
 function handleOneClickLevel() {

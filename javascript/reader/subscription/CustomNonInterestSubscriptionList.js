@@ -5,37 +5,37 @@ import Notifier from '../Notifier';
 import 'loggly-jslogger';
 import UserActivityLogger from '../UserActivityLogger';
 import ZeeguuRequests from '../zeeguuRequests';
-import { GET_SUBSCRIBED_SEARCHES } from '../zeeguuRequests';
-import { SUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { UNSUBSCRIBE_SEARCH_ENDPOINT } from '../zeeguuRequests';
-import { reload_articles_on_drawer_close } from "./main.js";
+import { GET_FILTERED_SEARCHES } from '../zeeguuRequests';
+import { FILTER_SEARCH_ENDPOINT } from '../zeeguuRequests';
+import { UNFILTER_SEARCH_ENDPOINT } from '../zeeguuRequests';
+import { reload_articles_on_drawer_close } from "./main";
 
-//const HTML_ID_FEED_TEMPLATE = "#topicAddable-template";
-const HTML_ID_SUBSCRIPTION_LIST = '#searchesList';
+
+const HTML_ID_SUBSCRIPTION_LIST = '#searchesFilterList';
 const HTML_ID_SUBSCRIPTION_TEMPLATE = '#subscription-template-search';
 const HTML_CLASS_REMOVE_BUTTON = '.removeButton';
-const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH';
-const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH';
-const ALL_INTERESTS = ".tagsOfInterests";
+const USER_EVENT_FOLLOWED_FEED = 'FOLLOW SEARCH FILTER';
+const USER_EVENT_UNFOLLOWED_FEED = 'UNFOLLOW SEARCH FILTER';
+const ALL_NONINTERESTS = ".tagsOfNonInterests";
 
 /* Setup remote logging. */
 let logger = new LogglyTracker();
 logger.push({
     'logglyKey': config.LOGGLY_TOKEN,
     'sendConsoleErrors': true,
-    'tag': 'SearchSubscriptionList'
+    'tag': 'SearchFilterSubscriptionList'
 });
 
 /**
  * Shows a list of all subscribed searches, allows the user to remove them.
  * It updates the {@link ArticleList} accordingly.
  */
-export default class SearchSubscriptionList {
+export default class CustomNonInterestSubscriptionList {
     /**
-     * Initialise an empty {@link Map} of searchs.
+     * Initialise an empty {@link Map} of searches.
      */
     constructor() {
-        this.searchList = new Map();
+        this.customNonInterestSubscriptionList = new Map();
     }
 
     /**
@@ -43,7 +43,7 @@ export default class SearchSubscriptionList {
      *  Uses {@link ZeeguuRequests}.
      */
     load() {
-        ZeeguuRequests.get(GET_SUBSCRIBED_SEARCHES, {}, this._loadSubscriptions.bind(this));
+        ZeeguuRequests.get(GET_FILTERED_SEARCHES, {}, this._loadSubscriptions.bind(this));
     };
 
     /**
@@ -69,7 +69,6 @@ export default class SearchSubscriptionList {
      * @param {Object[]} data - List containing the searches the user is subscribed to.
      */
     _loadSubscriptions(data) {
-        console.log("loading data...");
         for (let i = 0; i < data.length; i++) {
             this._addSubscription(data[i]);
         }
@@ -80,27 +79,22 @@ export default class SearchSubscriptionList {
      * @param {Object} search - Data of the particular search to add to the list.
      */
     _addSubscription(search) {
-        if (this.searchList.has(search.id))
+        if (this.customNonInterestSubscriptionList.has(search.id))
             return;
         let template = $(HTML_ID_SUBSCRIPTION_TEMPLATE).html();
         let subscription = $(Mustache.render(template, search));
 
-        let remove = $(subscription.find(".mdl-chip__action.interests.custom"));
+        let removeButton = $(subscription.find(".interests.custom"));
         let _unfollow = this._unfollow.bind(this);
-        remove.click(function (search) {
+        removeButton.click(function (search) {
             return function () {
                 _unfollow(search);
-                $(remove).fadeOut();
+                $(removeButton).fadeOut();
                 console.log("removed")
             };
         }(search));
-
-
-
-        //$(subscription).addClass("mdl-chip__action interests");
-        //.addClass("addableTitle").removeClass("mdl-chip__text");
-        $(ALL_INTERESTS).append(subscription);
-        this.searchList.set(search.id, search);
+        $(ALL_NONINTERESTS).append(subscription);
+        this.customNonInterestSubscriptionList.set(search.id, search);
     }
 
     /**
@@ -111,8 +105,8 @@ export default class SearchSubscriptionList {
     follow(search_terms) {
         UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, search_terms);
         this._loading();
-        let callback = ((data) => this._onSearchFollowed(search_terms, data)).bind(this);
-        ZeeguuRequests.get(SUBSCRIBE_SEARCH_ENDPOINT + "/" + search_terms, {}, callback);
+        let callback = ((data) => this._onSearchFilterFollowed(search_terms, data)).bind(this);
+        ZeeguuRequests.get(FILTER_SEARCH_ENDPOINT + "/" + search_terms, {}, callback);
     }
 
     /**
@@ -122,8 +116,9 @@ export default class SearchSubscriptionList {
      * @param {Object} search_terms - Data of the particular search that has been subscribed to.
      * @param {string} reply - Reply from the server.
      */
-    _onSearchFollowed(search_terms, reply) {
+    _onSearchFilterFollowed(search_terms, reply) {
         if (reply != null) {
+            UserActivityLogger.log(USER_EVENT_FOLLOWED_FEED, reply.id, search_terms);
             this._addSubscription(reply);
             this._changed();
         } else {
@@ -141,8 +136,8 @@ export default class SearchSubscriptionList {
         UserActivityLogger.log(USER_EVENT_UNFOLLOWED_FEED, search.id, search);
         this._remove(search);
         this._loading();
-        let callback = ((data) => this._onSearchUnfollowed(search, data)).bind(this);
-        ZeeguuRequests.post(UNSUBSCRIBE_SEARCH_ENDPOINT, { search_id: search.id }, callback);
+        let callback = ((data) => this._onSearchFilterUnfollowed(search, data)).bind(this);
+        ZeeguuRequests.post(UNFILTER_SEARCH_ENDPOINT, { search_id: search.id }, callback);
     }
 
     /**
@@ -152,7 +147,7 @@ export default class SearchSubscriptionList {
      * @param {Object} search - Data of the particular search to that has been unfollowed.
      * @param {string} reply - Server reply.
      */
-    _onSearchUnfollowed(search, reply) {
+    _onSearchFilterUnfollowed(search, reply) {
         if (reply === "OK") {
             this._changed();
         } else {
@@ -167,7 +162,7 @@ export default class SearchSubscriptionList {
      * @param {Object} search - Data of the particular search to remove from the list.
      */
     _remove(search) {
-        if (!this.searchList.delete(search.id)) { console.log("Error: search not in search list."); }
+        if (!this.customNonInterestSubscriptionList.delete(search.id)) { console.log("Error: search not in search list."); }
         $('span[searchRemovableID="' + search.id + '"]').fadeOut();
     }
 
@@ -180,8 +175,8 @@ export default class SearchSubscriptionList {
 
     /**
      * Fire event to show loader while subscribing / unsubscribing
+     * Not doing anything anymore because we're not reloading anymore
      */
     _loading() {
-        // document.dispatchEvent(new CustomEvent(config.EVENT_LOADING));
     }
 };

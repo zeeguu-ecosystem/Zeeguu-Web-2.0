@@ -1,8 +1,8 @@
-.main-container{
+.main-container {
   margin-left: 12.5em;
   padding: 0.0625em 1em;
   height: 100%;
-  margin-top: 1em; 
+  margin-top: 1em;
 }
 
 .select-article,
@@ -51,7 +51,7 @@ p {
 .headmenuTab {
   font-family: Montserrat;
   font-size: 0.6em;
-  font-weight: 400;  
+  font-weight: 400;
   letter-spacing: 0;
 }
 
@@ -78,29 +78,27 @@ a:hover {
   color: #ffbb54;
 }
 
-
 /*******MEDIA QUERIES **********/
-@media screen and (max-width: 500px) {  
-  .main-container{
+@media screen and (max-width: 500px) {
+  .main-container {
     position: relative;
     overflow-x: hidden;
-    margin:0; 
+    margin: 0;
   }
 
-  .select-article, h1{
+  .select-article,
+  h1 {
     font-size: 1.2em;
     margin-top: 1em;
     margin-bottom: 0.5em;
+  }
 
+  .row__bar {
+    padding: 0em;
   }
-  
-  .row__bar{
-    padding:0em; 
-  }
-  .bar{
+  .bar {
     width: 19px;
     height: 0px;
     border: 0.5px solid #acacac;
   }
-  
-  }
+}
